@@ -1,0 +1,110 @@
+#################
+## BASE SYSTEM ##
+#################
+
+base 
+base-devel
+linux
+linux-firmware
+linux-lts
+linux-lts-headers
+
+##############################
+## GRAPHICAL USER INTERFACE ##
+##############################
+
+xorg-server
+xorg-apps
+xf86-video-ati or [ virtualbox-guest-utils ]
+mesa
+rxvt-unicode
+
+#########################
+## DESKTOP ENVIRONMENT ##
+#########################
+
+i3-gaps
+i3status
+i3blocks
+rofi
+ttf-font-awesome
+ttf-bitstream-vera
+
+##################
+## APPLICATIONS ##
+##################
+
+[  ESSENTIAL  ]
+
+	termite
+	git
+	curl
+	wget
+	yay { 	
+		git clone https://aur.archlinux.org/yay.git 
+		cd yay
+		makepkg -si
+	}
+
+[    AUDIO    ]
+
+	pulseaudio
+	pulseaudio-alsa
+	pavucontrol
+	alsa-utils
+	alsa-plugins
+	alsa-lib
+	alsa-firmware
+
+[ MANAGEMENT ]
+	
+	timeshift
+	net-tools
+	cfdisk
+	nm-applets
+	networkmanager
+	
+
+[   BROWSER   ]
+	
+	brave
+
+[ TEXT EDITOR ]
+
+	sublime-text
+
+[ SYSTEM INFO ]
+
+	neofetch
+	dmidecode
+	htop
+	lm_sensors
+	bleachnit
+	vnstat
+
+
+[  DOCUMENTS  ]
+	
+	libreOffice
+	zathura-pdf
+
+
+[    IMAGE    ]
+
+	gimp
+	imagemagick
+
+[    MEDIA    ]
+
+	mpv
+	cmus
+	
+[   TORRENT   ]
+
+	transmission-cli
+
+[     ZIP     ]
+
+	unrar
+	unzip
+	zip
