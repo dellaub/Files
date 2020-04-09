@@ -12,11 +12,85 @@
 
 
 
+##############################
+##       INSTALL ARCH       ##
+##############################
 
+01 -> KEYBOARD LAYOUT
+		
+		#list layouts
+			localectl list-keymaps
+		# set keyboard layout
+			loadkeys be-latin1
+
+
+02 -> CHECK BOOT MODE [ BIOS || UEFI ]
+
+		# list EFI mode location folder
+			ls /sys/firmware
+				#if folder exists you are running UEFI
+				#if folder does not exist you are running BIOS
+
+03 -> CHECK NETWORK CONNECTION
+
+		#check network interface
+			ip link
+		#test network
+			ping google.com 
+
+04 -> NETWORK TIME SYNC
+		
+		#enable ntework time sync
+			timedatectl set-ntp true
+
+05 -> PARTITION DISK SPACE
+	
+		# Run partition program
+			cfdisk
+				# Select DOS
+				# create boot partition [sda1] min-512 Mb
+				# create swap partition [sda2] min-2 Gb
+				# create home partition [sda3] 40% 
+				# create root partition [sda4] 60% 
+				# make boot part. bootable
+				# change swap partition type (linux/swap solaris)
+				# write changes
+
+06 -> FORMAT PARTITIONS
+		
+		# make filesystem in /boot & /home & /mnt
+ 			mkfs.ext4 /dev/sda1
+			mkfs.ext4 /dev/sda3
+			mkfs.ext4 /dev/sda4
+		# make swap partition 
+			mkswap /dev/sda2
+		# enable swap partition 
+			swapon /dev/sda2	
+		# check partitions	
+			lsblk
+	
+07 -> MOUNT FILESYSTEM
+
+		# mount filesystem in /mnt 
+			mount /dev/sda4	/mnt
+		# create home and boot folder
+			mkdir /mnt/home /mnt/boot 
+		# mount the partitions to their respective folder
+			mount /dev/sda1 /mnt/boot
+			mount /dev/sda3 /mnt/home
+		# check partitions	
+			lsblk
+
+08 -> SELECT MIRRORS
+
+		# open mirror list file
+		# make the closest mirror first on the list
+			vim /etc/pacman.d/mirrorlist
 
 #################
 ## BASE SYSTEM ##
-#################
+#################		
+
 "[[[[ USB live arch ]]]]"
 
 	base 
@@ -25,10 +99,24 @@
 	linux-firmware
 	linux-lts
 	linux-lts-headers
-	#	pacstrap /mnt base base-devel linux linux-lts linux-firmware linux-lts-headers 	
+	#	pacstrap /mnt base base-devel linux linux-lts linux-firmware linux-lts-headers 
+	 	 
+
+10 -> SYSTEM CONFIGURATION
+		
+		# Generate an fstab file
+			genfstab -U /mnt >> /mnt/etc/fstab
+		# check the file
+			vim /mnt/etc/fstab
+
+			# LOG AS ROOT IN /mnt
+				arch-chroot /mnt 
+
+	
 
 "[[[[ arch-chroot /mnt ]]]]"	
 	
+
 	grub
 		# download grub
 			pacman -S grub
@@ -58,22 +146,6 @@
 						user=admin
 						pass=admin
 			
-
-		# exit back to usb
-			exit
-	
-"[[[[ USB live arch ]]]]"
-
-	# UNMONT SYSTEM FROM the USB 
-		# unmount /mnt from the installer 
-			umount -R /mnt
-
-"[[[[ REBOOT ]]]]"
-
-	reboot
-
-"[[[[ IN THE SYSTEM ]]]]"
-	
 	# zsh		
 	# zsh-autosuggestions	 	
 	# zsh-completions	 	
@@ -114,8 +186,19 @@
 	# specify the window manager in .xinitrc
 				vim /home/user/.config/xorg-X11/xinitrc
 				add: 'exec i3'
-	# start i3
-		startx			
+	# exit back to usb
+		exit
+
+	# UNMONT SYSTEM FROM the USB 
+		# unmount /mnt from the installer 
+			umount -R /mnt
+
+"[[[[ REBOOT ]]]]"
+
+	reboot
+
+# start i3 AFTER LOGIN AS USER
+	startx			
 
 ##################
 ## APPLICATIONS ##
