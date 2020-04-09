@@ -1,110 +1,245 @@
+
+"install arch"			> usb as root
+"base system" 			> usb as root
+"timezone"    			> usb as root
+"create user"			> usb as root
+"passwords"				> usb as root
+"Display server"		> usb as root
+"Desktop environment"	> usb as root
+"unmount"
+"reboot"
+"applications install" 	> archlinux as user
+
+
+
+
+
 #################
 ## BASE SYSTEM ##
 #################
+"[[[[ USB live arch ]]]]"
 
-base 
-base-devel
-linux
-linux-firmware
-linux-lts
-linux-lts-headers
+	base 
+	base-devel
+	linux
+	linux-firmware
+	linux-lts
+	linux-lts-headers
+	#	pacstrap /mnt base base-devel linux linux-lts linux-firmware linux-lts-headers 	
+
+"[[[[ arch-chroot /mnt ]]]]"	
+	
+	grub
+		# download grub
+			pacman -S grub
+		# install grub
+			grub-install --target=i386-pc /dev/sda
+		# make grub config file
+			grub-mkconfig -o /boot/grub/grub.cfg
+		
+	# man-db
+	# neovim
+	# util-linux
+	# networkmanager
+		pacman -S --noconfirm --needed man-db networkmanager neovim util-linux
+				
+				# enable networkmanager	(autostart every login)
+					systemctl enable NetworkManager
+
+ 	#ADD LOW PRIVILEGED USER
+		# add non root user
+			useradd -m -g wheel username
+		# enable password
+			passwd username
+		# enable user to use sudo commands
+			#uncomment line 82
+				vim /etc/sudoers
+					#login
+						user=admin
+						pass=admin
+			
+
+		# exit back to usb
+			exit
+	
+"[[[[ USB live arch ]]]]"
+
+	# UNMONT SYSTEM FROM the USB 
+		# unmount /mnt from the installer 
+			umount -R /mnt
+
+"[[[[ REBOOT ]]]]"
+
+	reboot
+
+"[[[[ IN THE SYSTEM ]]]]"
+	
+	# zsh		
+	# zsh-autosuggestions	 	
+	# zsh-completions	 	
+	# zsh-syntax-highlighting
+		pacman -S --noconfirm --needed zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 
 ##############################
 ## GRAPHICAL USER INTERFACE ##
 ##############################
 
-xorg-server
-xorg-apps
-xf86-video-ati or [ virtualbox-guest-utils ]
-mesa
-rxvt-unicode
+	# xorg-server
+	# xorg-init
+		pacman -S --noconfirm --needed xorg-server xorg-init
+
+	# xf86-video-ati or [ virtualbox-guest-utils ]
+	# mesa
+		pacman -S --noconfirm --needed xf86-video-ati mesa
+	
+	# rxvt-unicode
+		pacman -S --noconfirm --needed rxvt-unicode
 
 #########################
 ## DESKTOP ENVIRONMENT ##
 #########################
 
-i3-gaps
-i3status
-i3blocks
-rofi
-ttf-font-awesome
-ttf-bitstream-vera
+	# i3-gaps
+	# i3status
+	# i3blocks
+		pacman -S --noconfirm --needed i3-gaps i3blocks i3status
+
+	# rofi
+		pacman -S --noconfirm --needed rofi
+	
+	# ttf-font-awesome
+	# ttf-bitstream-vera
+		pacman -S --noconfirm --needed ttf-bitstream-vera ttf-font-awesome
+
+	# specify the window manager in .xinitrc
+				vim /home/user/.config/xorg-X11/xinitrc
+				add: 'exec i3'
+	# start i3
+		startx			
 
 ##################
 ## APPLICATIONS ##
-##################
+##################  
 
-[  ESSENTIAL  ]
+"[[[[[ ESSENTIAL ]]]]]"
 
-	termite
-	git
-	curl
-	wget
-	yay { 	
+	# termite
+	# git
+	# curl
+	# wget
+		pacman -S --noconfirm --needed termite git curl wget
+
+	# yay  	
 		git clone https://aur.archlinux.org/yay.git 
 		cd yay
+		makepkg -si 
+
+"[[[[[ AUDIO ]]]]]"    
+
+	# pulseaudio
+	# pulseaudio-alsa
+	# pavucontrol
+		pacman -S --noconfirm --needed pulseaudio pulseaudio-alsa pavucontrol
+	
+	# alsa-utils
+	# alsa-plugins
+	# alsa-lib
+	# alsa-firmware
+		pacman -S --noconfirm --needed alsa-utils alsa-plugins alsa-lib alsa-firmware
+	
+	# audacity
+		pacman -S --noconfirm --needed audacity
+
+"[[[[[ MANAGEMENT ]]]]]" 
+	
+	# timeshift
+		git clone https://aur.archlinux.org/timeshift.git 
+		cd timeshift
 		makepkg -si
-	}
+	# net-tools
+	# networkmanager
+	# reflector
+		pacman -S --noconfirm --needed net-tools networkmanager reflector
 
-[    AUDIO    ]
-
-	pulseaudio
-	pulseaudio-alsa
-	pavucontrol
-	alsa-utils
-	alsa-plugins
-	alsa-lib
-	alsa-firmware
-
-[ MANAGEMENT ]
+"[[[[[ BROWSER ]]]]]"   
 	
-	timeshift
-	net-tools
-	cfdisk
-	nm-applets
-	networkmanager
+	# brave
+		git clone https://aur.archlinux.org/brave.git 
+		cd brave
+		makepkg -si
+	# surf
+		pacman -S --noconfirm --needed surf
+
+
+"[[[[[ TEXT EDITOR ]]]]]" 
+
+	# sublime-text-3
+		git clone https://aur.archlinux.org/sublime-text-dev.git 
+		cd sublime-text-dev
+		makepkg -si
+
+"[[[[ SYSTEM INFO ]]]]"
+
+	# pfetch
+		git clone https://aur.archlinux.org/pfetch.git 
+		cd pfetch
+		makepkg -si
 	
+	# dmidecode
+	# htop
+	# lm_sensors
+	# bleachbit
+	# vnstat
+	# sysstat
+		pacman -S --noconfirm --needed dmidecode htop lm_sensors bleachbit vnstat sysstat
 
-[   BROWSER   ]
+
+"[[[[[ DOCUMENTS ]]]]]"  
 	
-	brave
+	# libreOffice# 
+	# zathura-pdf
+	# vifm
+		pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura-pdf-mupdf
 
-[ TEXT EDITOR ]
-
-	sublime-text
-
-[ SYSTEM INFO ]
-
-	neofetch
-	dmidecode
-	htop
-	lm_sensors
-	bleachnit
-	vnstat
-
-
-[  DOCUMENTS  ]
+"[[[[[ ACCESSORIES ]]]]]" 
 	
-	libreOffice
-	zathura-pdf
+	# bc 
+	# gcalculator
+		pacman -S --noconfirm --needed bc gcalculator
+	# wttr
+		git clone https://aur.archlinux.org/wttr.git 
+		cd wttr
+		makepkg -si
 
+"[[[[[ IMAGE ]]]]]"    
 
-[    IMAGE    ]
+	# qview
+		git clone https://aur.archlinux.org/qview.git 
+		cd qview
+		makepkg -si
+	# gimp
+	# xwallpaper
+		pacman -S --noconfirm --needed gimp xwallpaper
 
-	gimp
-	imagemagick
+"[[[[[ MEDIA ]]]]]"    
 
-[    MEDIA    ]
-
-	mpv
-	cmus
+	# mpv
+	# cmus
+		pacman -S --noconfirm --needed mpv cmus
 	
-[   TORRENT   ]
+"[[[[[ DOWNLOADERS ]]]]]" 
 
-	transmission-cli
+	# transmission-cli
+	# youtube-dl
+		pacman -S --noconfirm --needed transmission-cli youtube-dl
 
-[     ZIP     ]
+"[[[[[ ZIP ]]]]]"     
 
-	unrar
-	unzip
-	zip
+	# unrar
+	# unzip
+	# zip
+		pacman -S --noconfirm --needed unrar unzip zip
+
+"[[[[[ PRIVACY ]]]]]"   
+	
+	# tor
