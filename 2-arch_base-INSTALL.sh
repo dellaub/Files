@@ -59,6 +59,9 @@ grubInstall
 				systemctl enable NetworkManager
 }
 
+essentialPKGS
+
+
 # mnt 11 [install GUI]
 	
 	installGUI(){
@@ -78,6 +81,10 @@ grubInstall
 				pacman -S --noconfirm --needed rxvt-unicode
 
 }
+
+installGUI
+
+
 # mnt 12 [configure GUI]
 		
 
@@ -104,8 +111,11 @@ grubInstall
 				
 }
 
+installDeskEnv
+
+
 # mnt 14 [configure Desktop environment]
-echo -e " \033[1;33m[ STEP 14 - CONFIGURING DESKTOP ENVIRONMENT INSTALLATION "
+echo -e " \033[1;33m[ STEP 14 - CONFIGURING DESKTOP ENVIRONMENT INSTALLATION ]\033[0m"
 sleep 1
 
 # mnt 15 [unmount /mnt]
