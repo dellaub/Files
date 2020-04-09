@@ -1,4 +1,5 @@
 
+"manual partition"		> usb as root
 "install arch"			> usb as root
 "base system" 			> usb as root
 "timezone"    			> usb as root
