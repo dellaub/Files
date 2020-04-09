@@ -94,7 +94,7 @@ Mountfilesystem
 
 }
 
-movescripts
+movescriptscd 
 
 # iso 04 [set mirrorlist]
 
@@ -134,6 +134,14 @@ kerneldownload
 
 genFStables
 
+echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG IN AS ROOT: ]\033[0m "
+sleep 2
+echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m cd /home/installscripts \033[0m\033[1;33m]\033[0m "
+sleep 2
+echo -e " \033[1;33m\033[44m[ 2 THEN , THIS COMMAND $\033[1;37m chmod +x 2-arch_base-INSTALL \033[0m\033[1;33m]\033[0m "
+sleep 2
+echo -e " \033[1;33m\033[44m[ 3 AND THIS LAST ONE TO CONTINUE THE INSTALLATION $\033[1;37m ./2-arch_base-INSTALL \033[0m "
+
 
 # iso 6.5 [generate file system tables]
 
@@ -149,13 +157,7 @@ loginsystem(){
 
 loginsystem
 
-echo -e " \033[1;33m[ PLEASE, RUN THIS COMMAND:\033[1;32m cd /home/installscripts \033[0m\033[1;33m]\033[0m "
-	read command1
-		$command1
-sleep 1
 
-echo -e " \033[1;33m[ VERY GOOD! NOW THIS LAST ONE:\033[1;32m ./2-arch_base-INSTALL \033[0m\033[1;33m]\033[0m "
-	read command2
-		$command2
-	echo -e " \033[1;32m[ NICE ]\033[0m "
-sleep 1
+
+	
+
