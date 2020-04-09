@@ -82,7 +82,7 @@ Mountfilesystem
 
 # iso 3.5 [mount file system and enable swap]
 	
-	movescipts(){
+	movescripts(){
 		
 		echo -e " \033[1;33m[ STEP 3.5 - MOVING INSTALL SCRIPTS INTO THE SYSTEM ]\033[0m  "
 
