@@ -132,6 +132,13 @@ sleep 2
 
 }
 
+# [ COMMANDS ] #
+partitiondisk
+mkfilesystem
+Mountfilesystem
+movescripts 
+kerneldownload
+genFStables
 
 echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG IN AS ROOT: ]\033[0m "
 sleep 2
@@ -151,14 +158,6 @@ loginsystem(){
 
 }
 
-
-# [ COMMANDS ] #
-partitiondisk
-mkfilesystem
-Mountfilesystem
-movescripts 
-kerneldownload
-genFStables
 loginsystem
 
 	
