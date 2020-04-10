@@ -231,7 +231,7 @@ installDeskEnv
 				cp /etc/skel/.bash_profile ~/
 
 			# autostart i3 
-				echo -e "\nif systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then" >> ~/.bash_profile
+				echo -e "\nif systemctl -q is-active graphical.target && [[ ! \$DISPLAY && \$XDG_VTNR -eq 1 ]]; then" >> ~/.bash_profile
 				echo -e "	exec startx" >> ~/.bash_profile
 				echo -e "fi" >> ~/.bash_profile  
 
