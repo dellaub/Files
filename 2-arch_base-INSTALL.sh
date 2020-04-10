@@ -1,3 +1,6 @@
+#!/bin/bash 
+set -e 
+
 # mnt 07 [install grub] 
 
 	grubInstall(){
@@ -196,7 +199,7 @@ configureDE
 
 # mnt 15 [unmount /mnt]
 	
-	reboot(){
+	rebootsys(){
 		
 		echo -e " \033[1;33m[ STEP 15 - UNMOUNTING /mnt  ]\033[0m "
 		sleep 1
