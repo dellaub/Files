@@ -180,10 +180,10 @@ installGUI
 		sleep 1
 
 				# copy xinitrc file from /etc/X11/xinit
-					cp /etc/X11/xinit/xinitrc /home/.xinitrc					
+					cp /etc/X11/xinit/xinitrc ~/.xinitrc					
 				
 				# edit .xinitrc
-					sed 50q /etc/X11/xinit/xinitrc > /home/.xinitrc
+					sed 50q /etc/X11/xinit/xinitrc > ~/.xinitrc
 				
 				# add command to .xinitrc
 					echo "setxkbmap be &" >> /home/.xinitrc ;   # keyboard layout
