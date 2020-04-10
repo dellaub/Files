@@ -92,7 +92,7 @@ grubInstall
 				echo "hostname" > /etc/hostname
 
 			# enable sudo to the new user	
-				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
+				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers
 
 
 }
