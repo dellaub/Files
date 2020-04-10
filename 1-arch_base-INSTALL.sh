@@ -104,6 +104,8 @@ movescripts
 		echo -e " \033[1;33m[ STEP 05 - STARTING KERNEL AND FIRMWARE INSTALLATION ]\033[0m  "
 		sleep 1
 			
+			# update repositories
+				pacman -Sy		
 			# base 
 			# base-devel
 			# linux
