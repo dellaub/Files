@@ -268,10 +268,9 @@ configureDE
 
 	echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"  
 	sleep 2
-	echo -e " \033[1;33m\033[44m[ AFTER REBOOTING, OPEN A TERMINAL AND RUN THIS COMMAND $"
+	echo -e "\033[1;33m\033[44m[ AFTER REBOOTING, OPEN A TERMINAL AND RUN THIS COMMAND ]\n #^C033[1;37m\033[44m . ~/installscripts/3-arch_apps-INSTALL.sh \033[0m\033[1;33m\033[0m"
 	sleep 2
-	echo -e "\033[1;37m\033[44m[ . ~/installscripts/3-arch_apps-INSTALL.sh ]\033[0m\033[1;33m]\033[0m "
-	sleep 2
+	
 
 
 
