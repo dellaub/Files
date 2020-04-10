@@ -28,10 +28,10 @@ set -e
 						read close3				
 				
 				#append countries selected to fastmirrors
-					grep -A 1 "$country" | tr -d '-' >> fastmirrors
-					grep -A 1 "$close1" | tr -d '-' >> fastmirrors
-					grep -A 1 "$close2" | tr -d '-' >> fastmirrors
-					grep -A 1 "$close3" | tr -d '-' >> fastmirrors	
+					grep -A 1 "$country" mirrorlist | tr -d '-' >> fastmirrors
+					grep -A 1 "$close1" mirrorlist | tr -d '-' >> fastmirrors
+					grep -A 1 "$close2" mirrorlist | tr -d '-' >> fastmirrors
+					grep -A 1 "$close3" mirrorlist | tr -d '-' >> fastmirrors	
 				# backup mirrorlist file
 					cp mirrorlist mirrorlist.bak
 				# enable fastmirrors file
