@@ -10,9 +10,9 @@ set -e
 			sleep 1
 
 				# go to mirror list location
-					cd /etc/pacman.d/
+					cd /etc/pacman.d/ 
 				# create header
-					sed '5q' > fastmirrors
+					sed '5q' mirrorlist > fastmirrors
 				# list the closest countries
 
 					echo -e "\033[32m[ name of your country (i.e : France , Belgium) ]\033[0m"
