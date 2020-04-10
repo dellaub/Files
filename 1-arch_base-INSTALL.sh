@@ -88,13 +88,13 @@ sleep 2
 		echo -e " \033[1;33m[ STEP 04 - MOVING INSTALL SCRIPTS INTO THE SYSTEM ]\033[0m  "
 
 			# create home and boot folder within /mnt
-				mkdir /mnt/home/installscripts 
+				mkdir /mnt/.installscripts 
 			# copy the second part of the installation to the system
-				cp ~/Files/2-arch_base-INSTALL.sh /mnt/home/installscripts 
-				cp ~/Files/3-arch_apps-INSTALL.sh /mnt/home/installscripts
+				cp ~/Files/2-arch_base-INSTALL.sh /mnt/.installscripts 
+				cp ~/Files/3-arch_apps-INSTALL.sh /mnt/.installscripts
 			# make them executable
-				chmod +x /mnt/home/installscripts/2-arch_base-INSTALL.sh
-				chmod +x /mnt/home/installscripts/3-arch_apps-INSTALL.sh
+				chmod +x /mnt/.installscripts/2-arch_base-INSTALL.sh
+				chmod +x /mnt/.installscripts/3-arch_apps-INSTALL.sh
 }
 
 
