@@ -32,6 +32,8 @@ set -e
 					grep -A 1 "$close1" mirrorlist | tr -d '-' >> fastmirrors
 					grep -A 1 "$close2" mirrorlist | tr -d '-' >> fastmirrors
 					grep -A 1 "$close3" mirrorlist | tr -d '-' >> fastmirrors	
+				# add remainder of the mirrors
+					sed -n '7,573 p' mirrorlist >> fastmirrors
 				# backup mirrorlist file
 					cp mirrorlist mirrorlist.bak
 				# enable fastmirrors file
@@ -51,7 +53,7 @@ setmirrors
 		sleep 1
 
 			# download grub
-				pacman -S --noconfirm --needed grub
+				pacman -Sy --noconfirm --needed grub
 			
 			# install grub
 				grub-install --target=i386-pc /dev/sda
