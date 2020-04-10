@@ -24,7 +24,6 @@ sleep 2
 			cfdisk	
 }
 
-partitiondisk
 
 
 # iso 02 [make file systems]
@@ -60,7 +59,6 @@ partitiondisk
 				swapon /dev/$swap
 }
 
-mkfilesystem
 
 
 # iso 03 [mount file system and enable swap]
@@ -81,7 +79,6 @@ mkfilesystem
 
 }
 
-Mountfilesystem
 
 
 # iso 04 [mount file system and enable swap]
@@ -95,11 +92,11 @@ Mountfilesystem
 			# copy the second part of the installation to the system
 				cp ~/Files/2-arch_base-INSTALL.sh /mnt/home/installscripts 
 				cp ~/Files/3-arch_apps-INSTALL.sh /mnt/home/installscripts
-
-
+			# make them executable
+				chmod +x /mnt/home/installscripts/2-arch_base-INSTALL.sh
+				chmod +x /mnt/home/installscripts/3-arch_apps-INSTALL.sh
 }
 
-movescripts 
 
 
 # iso 05 [install kernel and firmware]
@@ -121,7 +118,6 @@ movescripts
 				pacstrap /mnt base base-devel vim linux linux-lts linux-firmware linux-lts-headers
 }
 
-kerneldownload
 
 
 # iso 06 [generate file system tables]
@@ -136,15 +132,11 @@ kerneldownload
 
 }
 
-genFStables
 
 echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG IN AS ROOT: ]\033[0m "
 sleep 2
-echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m cd /home/installscripts \033[0m\033[1;33m]\033[0m "
+echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m . /home/installscripts/2-arch_base-INSTALL.sh \033[0m\033[1;33m]\033[0m "
 sleep 2
-echo -e " \033[1;33m\033[44m[ 2 THEN , THIS COMMAND $\033[1;37m chmod +x 2-arch_base-INSTALL.sh \033[0m\033[1;33m]\033[0m "
-sleep 2
-echo -e " \033[1;33m\033[44m[ 3 AND THIS LAST ONE TO CONTINUE THE INSTALLATION $\033[1;37m ./2-arch_base-INSTALL.sh \033[0m "
 
 
 # iso 6.5 [generate file system tables]
@@ -159,9 +151,15 @@ loginsystem(){
 
 }
 
+
+# [ COMMANDS ] #
+partitiondisk
+mkfilesystem
+Mountfilesystem
+movescripts 
+kerneldownload
+genFStables
 loginsystem
-
-
 
 	
 
