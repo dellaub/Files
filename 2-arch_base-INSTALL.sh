@@ -186,8 +186,8 @@ installGUI
 					sed 50q /etc/X11/xinit/xinitrc > ~/.xinitrc
 				
 				# add command to .xinitrc
-					echo "setxkbmap be &" >> /home/.xinitrc ;   # keyboard layout
-					echo "exec /usr/bin/i3" >> /home/.xinitrc	# i3 exec
+					echo "setxkbmap be &" >>  ~/.xinitrc ;   # keyboard layout
+					echo "exec /usr/bin/i3" >> ~/.xinitrc	# i3 exec
 
 }
 
