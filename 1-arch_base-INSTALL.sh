@@ -80,11 +80,11 @@ mkfilesystem
 Mountfilesystem
 
 
-# iso 3.5 [mount file system and enable swap]
+# iso 04 [mount file system and enable swap]
 	
 	movescripts(){
 		
-		echo -e " \033[1;33m[ STEP 3.5 - MOVING INSTALL SCRIPTS INTO THE SYSTEM ]\033[0m  "
+		echo -e " \033[1;33m[ STEP 04 - MOVING INSTALL SCRIPTS INTO THE SYSTEM ]\033[0m  "
 
 			# create home and boot folder within /mnt
 				mkdir /mnt/home/installscripts 
@@ -95,44 +95,6 @@ Mountfilesystem
 }
 
 movescripts 
-
-# iso 04 [set mirrorlist]
-		
-		setmirrors(){
-
-			echo -e " \033[1;33m[ STEP 04 - SETTING MIRRORS ] \033[0m  "
-			sleep 1
-
-				# go to mirror list location
-					cd /etc/pacman.d/
-				# create header
-					sed '5q' > fastmirrors
-				# list the closest countries
-
-					echo -e "\033[32m[ name of your country (i.e : France , Belgium) ]\033[0m"
-						read country
-
-					echo -e "\033[32m[ what is THE CLOSEST country to yours? ]\033[0m"
-						read close1
-
-					echo -e "\033[32m[ what is THE SECOND CLOSEST country to yours? ]\033[0m"
-						read close2
-
-					echo -e "\033[32m[ what is THE THIRD CLOSEST country to yours? ]\033[0m"
-						read close3				
-				
-				#append countries selected to fastmirrors
-					grep -A 1 "$country" | tr -d '-' >> fastmirrors
-					grep -A 1 "$close1" | tr -d '-' >> fastmirrors
-					grep -A 1 "$close2" | tr -d '-' >> fastmirrors
-					grep -A 1 "$close3" | tr -d '-' >> fastmirrors	
-				# backup mirrorlist file
-					cp mirrorlist mirrorlist.bak
-				# enable fastmirrors file
-					mv fastmirrors mirrorlist
-}
-
-setmirrors
 
 
 # iso 05 [install kernel and firmware]
