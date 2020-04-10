@@ -241,21 +241,14 @@ installDeskEnv
 configureDE
 
 
-# mnt 15 [unmount /mnt]
-	
-	reboot(){
-		
-		echo -e " \033[1;33m[ STEP 15 - UNMOUNTING /mnt  ]\033[0m "
-		sleep 1
+echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG BACK TO THE USB: ]\033[0m "
+sleep 2
+echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m umount -R /mnt \033[0m\033[1;33m]\033[0m "
+sleep 2
+echo -e " \033[1;33m\033[44m[ 2 THEN , THIS COMMAND $\033[1;37m reboot \033[0m\033[1;33m]\033[0m "
 
-			# exit back to usb
-				exit
+# exit back to usb
+	exit
 
-			# UNMONT SYSTEM FROM the USB 
-				# unmount /mnt from the installer 
-				umount -R /mnt
-			
-			# reboot
-				reboot
-}
+
 
