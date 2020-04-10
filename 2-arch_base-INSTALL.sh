@@ -20,15 +20,55 @@ grubInstall
 
 # mnt 08 [add new user]
 		
-
+	adduser(){
+		
 		echo -e " \033[1;33m[ STEP 08 - CREATING LOW PRIVILEGED USER ]\033[0m   "
 		sleep 1
+			
+					
+			# ask for user name and hostname
+
+
+				echo -e "\033[32m[ SET HOSTNAME ]\033[0m"
+					read HOST
+
+				echo -e "\033[32m[ SET USERNAME ]\033[0m"
+					read USER
+
+
+			# add user to wheel group
+				useradd -m -g wheel $USER
+			
+			# set password
+				echo -e " \033[1;33m[ SET PASSWORD FOR $USER ]\033[0m"
+				passwd $USER
+			
+			#set host name (computer name)
+				echo "hostname" > /etc/hostname
+
+			# enable sudo to the new user	
+				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
+
+
+}
+
+adduser
+
 
 # mnt 09 [change passwords]
-		
+	
+	rootpass(){	
 
-		echo -e " \033[1;33m[ STEP 09 - CHANGING ROOT PASSWORD ]\033[0m  "
+		echo -e " \033[1;33m[ STEP 09 - SETTING ROOT PASSWORD ]\033[0m  "
 		sleep 1
+
+				# set root password ( while root ) 
+					passwd				
+
+}
+
+rootpass
+
 
 # mnt 10 [install essential packages]
 
@@ -70,8 +110,8 @@ essentialPKGS
 		sleep 1
 			
 			# xorg-server
-			# xorg-init
-				pacman -S --noconfirm --needed xorg-server xorg-init
+			# xorg-xinit
+				pacman -S --noconfirm --needed xorg-server xorg-xinit
 
 			# xf86-video-ati or [ virtualbox-guest-utils ]
 			# mesa
@@ -86,10 +126,27 @@ installGUI
 
 
 # mnt 12 [configure GUI]
-		
+
+	configureGUI(){		
 
 		echo -e " \033[1;33m[ STEP 12 - CONFIGURING GRAPHICAL USER INTERFACE INSTALLATION ]\033[0m  "
 		sleep 1
+
+				# copy xinitrc file from /etc/X11/xinit
+					cp /etc/X11/xinit/xinitrc /home/.xinitrc					
+				
+				# edit .xinitrc
+					sed 50q /etc/X11/xinit/xinitrc > /home/.xinitrc
+				
+				# add command to .xinitrc
+					echo "setxkbmap be &" >> /home/.xinitrc ;   # keyboard layout
+					echo "exec /usr/bin/i3" >> /home/.xinitrc	# i3 exec
+
+}
+
+configureGUI
+
+
 
 # mnt 13 [install Desktop environment]
 
@@ -98,16 +155,17 @@ installGUI
 		echo -e " \033[1;33m[ STEP 13 - STARTING DESKTOP ENVIRONMENT INSTALLATION ]\033[0m "	
 		sleep 1
 			
-			# xorg-server
-			# xorg-init
-				pacman -S --noconfirm --needed xorg-server xorg-init
+			# i3-gaps
+			# i3status
+			# i3blocks
+				pacman -S --noconfirm --needed i3-gaps i3blocks i3status
 
-			# xf86-video-ati or [ virtualbox-guest-utils ]
-			# mesa
-				pacman -S --noconfirm --needed xf86-video-ati mesa
+			# rofi
+				pacman -S --noconfirm --needed rofi
 			
-			# rxvt-unicode
-				pacman -S --noconfirm --needed rxvt-unicode
+			# ttf-font-awesome
+			# ttf-bitstream-vera
+				pacman -S --noconfirm --needed ttf-bitstream-vera ttf-font-awesome
 				
 }
 
@@ -115,8 +173,26 @@ installDeskEnv
 
 
 # mnt 14 [configure Desktop environment]
-echo -e " \033[1;33m[ STEP 14 - CONFIGURING DESKTOP ENVIRONMENT INSTALLATION ]\033[0m"
-sleep 1
+		
+	configureDE(){	
+
+		echo -e " \033[1;33m[ STEP 14 - CONFIGURING DESKTOP ENVIRONMENT INSTALLATION ]\033[0m"
+		sleep 1	
+
+			
+			# copy .bash_profile to ~/
+				cp /etc/skel/.bash_profile ~/
+
+			# autostart i3 
+				echo -e "\nif systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then" >> ~/.bash_profile
+				echo -e "	exec startx" >> ~/.bash_profile
+				echo -e "fi" >> ~/.bash_profile  
+
+
+}
+
+configureDE
+
 
 # mnt 15 [unmount /mnt]
 	
