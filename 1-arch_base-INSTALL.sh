@@ -2,14 +2,18 @@
 set -e 
 
 
-######################################################################
-############### ARCH LINUX INSTALL BASE SYSTEM SCRIPT ################
-######################################################################
+#######################################################################
+############### ARCH LINUX INSTALL APPLICATIONS SCRIPT ################
+#######################################################################
+ ## BASE.SYSTEM 1 ##
+ ################### 
+
+# [ STARTUP ] #
 
 echo -e " \033[1;33m[ STEP 00 - STARTING ARCH LINUX INSTALL BASE SYSTEM  ]\033[0m "
 sleep 2
 
-# ORDER #
+# [ ORDER ] # 
 
 # iso 01 [partition disk] MANUAL
 
@@ -90,6 +94,7 @@ Mountfilesystem
 				mkdir /mnt/home/installscripts 
 			# copy the second part of the installation to the system
 				cp ~/Files/2-arch_base-INSTALL.sh /mnt/home/installscripts 
+				cp ~/Files/3-arch_apps-INSTALL.sh /mnt/home/installscripts
 
 
 }
@@ -112,7 +117,8 @@ movescripts
 			# linux-firmware
 			# linux-lts
 			# linux-lts-headers
-				pacstrap /mnt base base-devel linux linux-lts linux-firmware linux-lts-headers
+			# vim
+				pacstrap /mnt base base-devel vim linux linux-lts linux-firmware linux-lts-headers
 }
 
 kerneldownload
@@ -136,9 +142,9 @@ echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG IN AS ROOT: ]\033[0m "
 sleep 2
 echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m cd /home/installscripts \033[0m\033[1;33m]\033[0m "
 sleep 2
-echo -e " \033[1;33m\033[44m[ 2 THEN , THIS COMMAND $\033[1;37m chmod +x 2-arch_base-INSTALL \033[0m\033[1;33m]\033[0m "
+echo -e " \033[1;33m\033[44m[ 2 THEN , THIS COMMAND $\033[1;37m chmod +x 2-arch_base-INSTALL.sh \033[0m\033[1;33m]\033[0m "
 sleep 2
-echo -e " \033[1;33m\033[44m[ 3 AND THIS LAST ONE TO CONTINUE THE INSTALLATION $\033[1;37m ./2-arch_base-INSTALL \033[0m "
+echo -e " \033[1;33m\033[44m[ 3 AND THIS LAST ONE TO CONTINUE THE INSTALLATION $\033[1;37m ./2-arch_base-INSTALL.sh \033[0m "
 
 
 # iso 6.5 [generate file system tables]
