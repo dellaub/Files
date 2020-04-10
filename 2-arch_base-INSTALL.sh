@@ -97,11 +97,12 @@ set -e
 				passwd $USER
 			
 			#set host name (computer name)
-				echo "hostname" > /etc/hostname
+				echo "$HOST" > /etc/hostname
 
 			# enable sudo to the new user	
-				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers
-}
+				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers.tmp
+				mv /etc/sudoers.tmp /etc/sudoers
+}				
 
 
 
@@ -233,6 +234,7 @@ set -e
 				echo -e "\nif systemctl -q is-active graphical.target && [[ ! \$DISPLAY && \$XDG_VTNR -eq 1 ]]; then" >> ~/.bash_profile
 				echo -e "	exec startx" >> ~/.bash_profile
 				echo -e "fi" >> ~/.bash_profile  
+			# 	
 }
 
 
@@ -268,7 +270,7 @@ configureDE
 
 	echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"  
 	sleep 2
-	echo -e "\033[1;33m\033[44m[ AFTER REBOOTING, OPEN A TERMINAL AND RUN THIS COMMAND ]\n #^C033[1;37m\033[44m . ~/installscripts/3-arch_apps-INSTALL.sh \033[0m\033[1;33m\033[0m"
+	echo -e "\033[1;33m\033[44m[ AFTER REBOOTING, OPEN A TERMINAL AND RUN THIS COMMAND ]\n #^C033[1;37m\033[44m . /home/installscripts/3-arch_apps-INSTALL.sh \033[0m\033[1;33m\033[0m"
 	sleep 2
 	
 
