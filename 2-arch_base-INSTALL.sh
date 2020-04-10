@@ -2,6 +2,12 @@
 set -e 
 
 
+#######################################################################
+############### ARCH LINUX INSTALL APPLICATIONS SCRIPT ################
+#######################################################################
+						  ## BASE.SYSTEM 2 ##
+						  ################### 
+
 # iso [set mirrorlist]
 		
 		setmirrors(){
@@ -27,7 +33,7 @@ set -e
 					echo -e "\033[32m[ what is THE THIRD CLOSEST country to yours? ]\033[0m"
 						read close3				
 				
-				#append countries selected to fastmirrors
+				#append MIRROR SERVERS countries selected to fastmirrors
 					grep -A 1 "$country" mirrorlist | tr -d '-' >> fastmirrors
 					grep -A 1 "$close1" mirrorlist | tr -d '-' >> fastmirrors
 					grep -A 1 "$close2" mirrorlist | tr -d '-' >> fastmirrors
@@ -60,7 +66,7 @@ setmirrors
 			
 			# make grub config file
 				grub-mkconfig -o /boot/grub/grub.cfg
-	}
+}
 	
 grubInstall
 
@@ -95,8 +101,6 @@ grubInstall
 
 			# enable sudo to the new user	
 				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers
-
-
 }
 
 adduser
@@ -111,7 +115,6 @@ adduser
 
 				# set root password ( while root ) 
 					passwd				
-
 }
 
 rootpass
@@ -166,7 +169,6 @@ essentialPKGS
 			
 			# rxvt-unicode
 				pacman -S --noconfirm --needed rxvt-unicode
-
 }
 
 installGUI
@@ -188,7 +190,6 @@ installGUI
 				# add command to .xinitrc
 					echo "setxkbmap be &" >>  ~/.xinitrc ;   # keyboard layout
 					echo "exec /usr/bin/i3" >> ~/.xinitrc	# i3 exec
-
 }
 
 configureGUI
@@ -213,7 +214,6 @@ configureGUI
 			# ttf-font-awesome
 			# ttf-bitstream-vera
 				pacman -S --noconfirm --needed ttf-bitstream-vera ttf-font-awesome
-				
 }
 
 installDeskEnv
@@ -234,8 +234,6 @@ installDeskEnv
 				echo -e "\nif systemctl -q is-active graphical.target && [[ ! \$DISPLAY && \$XDG_VTNR -eq 1 ]]; then" >> ~/.bash_profile
 				echo -e "	exec startx" >> ~/.bash_profile
 				echo -e "fi" >> ~/.bash_profile  
-
-
 }
 
 configureDE
@@ -245,9 +243,12 @@ echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG BACK TO THE USB: ]\033[0m "
 sleep 2
 echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m exit \033[0m\033[1;33m]\033[0m "
 sleep 2
-echo -e " \033[1;33m\033[44m[ 2 THEN , THIS COMMAND $\033[1;37m umount -R /mnt \033[0m\033[1;33m]\033[0m "
+echo -e " \033[1;33m\033[44m[ 2 THEN INSIDE THE ISO , RUN THIS COMMAND $\033[1;37m umount -R /mnt \033[0m\033[1;33m]\033[0m "
 sleep 2
-echo -e " \033[1;33m\033[44m[ 3 THEN , THIS COMMAND $\033[1;37m reboot \033[0m\033[1;33m]\033[0m "
-
-
-
+echo -e " \033[1;33m\033[44m[ 3 FINALLY , THIS COMMAND $\033[1;37m reboot \033[0m\033[1;33m]\033[0m "
+sleep 2
+echo -e " \033[1;32m\033[44m[ 4 AFTER REBOOT OPEN A TERMINAL AND RUN THIS COMMAND $\033[1;37m cd ~/installscripts \033[0m\033[1;33m]\033[0m "
+sleep 2
+echo -e " \033[1;32m\033[44m[ 5 THEN , THIS COMMAND $\033[1;37m chmod +x 3-arch_apps-INSTALL.sh \033[0m\033[1;33m]\033[0m "
+sleep 2
+echo -e " \033[1;32m\033[44m[ 6 AND THIS LAST ONE TO CONTINUE THE INSTALLATION $\033[1;37m ./3-arch_apps-INSTALL.sh \033[0m "
