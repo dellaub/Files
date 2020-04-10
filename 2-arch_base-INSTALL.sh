@@ -46,7 +46,7 @@ set -e
 					mv fastmirrors mirrorlist
 }
 
-setmirrors
+
 
 
 
@@ -68,7 +68,7 @@ setmirrors
 				grub-mkconfig -o /boot/grub/grub.cfg
 }
 	
-grubInstall
+
 
 
 # mnt 08 [add new user]
@@ -103,7 +103,7 @@ grubInstall
 				sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers
 }
 
-adduser
+
 
 
 # mnt 09 [change passwords]
@@ -117,7 +117,6 @@ adduser
 					passwd				
 }
 
-rootpass
 
 
 # mnt 10 [install essential packages]
@@ -149,7 +148,7 @@ rootpass
 				systemctl enable NetworkManager
 }
 
-essentialPKGS
+
 
 
 # mnt 11 [install GUI]
@@ -171,7 +170,7 @@ essentialPKGS
 				pacman -S --noconfirm --needed rxvt-unicode
 }
 
-installGUI
+
 
 
 # mnt 12 [configure GUI]
@@ -192,7 +191,7 @@ installGUI
 					echo "exec /usr/bin/i3" >> ~/.xinitrc	# i3 exec
 }
 
-configureGUI
+
 
 
 
@@ -216,7 +215,7 @@ configureGUI
 				pacman -S --noconfirm --needed ttf-bitstream-vera ttf-font-awesome
 }
 
-installDeskEnv
+
 
 
 # mnt 14 [configure Desktop environment]
@@ -236,19 +235,43 @@ installDeskEnv
 				echo -e "fi" >> ~/.bash_profile  
 }
 
+
+
+
+## [ COMMANDS ] ##	
+
+setmirrors
+grubInstall
+adduser
+rootpass
+essentialPKGS
+installGUI
+configureGUI
+installDeskEnv
 configureDE
 
 
-echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG BACK TO THE USB: ]\033[0m "
-sleep 2
-echo -e " \033[1;33m\033[44m[ 1 RUN THIS COMMAND $\033[1;37m exit \033[0m\033[1;33m]\033[0m "
-sleep 2
-echo -e " \033[1;33m\033[44m[ 2 THEN INSIDE THE ISO , RUN THIS COMMAND $\033[1;37m umount -R /mnt \033[0m\033[1;33m]\033[0m "
-sleep 2
-echo -e " \033[1;33m\033[44m[ 3 FINALLY , THIS COMMAND $\033[1;37m reboot \033[0m\033[1;33m]\033[0m "
-sleep 2
-echo -e " \033[1;32m\033[44m[ 4 AFTER REBOOT OPEN A TERMINAL AND RUN THIS COMMAND $\033[1;37m cd ~/installscripts \033[0m\033[1;33m]\033[0m "
-sleep 2
-echo -e " \033[1;32m\033[44m[ 5 THEN , THIS COMMAND $\033[1;37m chmod +x 3-arch_apps-INSTALL.sh \033[0m\033[1;33m]\033[0m "
-sleep 2
-echo -e " \033[1;32m\033[44m[ 6 AND THIS LAST ONE TO CONTINUE THE INSTALLATION $\033[1;37m ./3-arch_apps-INSTALL.sh \033[0m "
+
+
+
+
+# [ INFORMATION TO UNMOUNT FROM THE USB AND ] #
+
+	echo -e " \033[1;33m\033[44m[ 1 PLEASE, RUN THIS COMMAND $\033[1;37m exit \033[0m\033[1;33m]\033[0m "
+	sleep 2
+	echo -e " \033[1;33m\033[44m[ 2 THEN INSIDE THE ISO , RUN THIS COMMAND $\033[1;37m umount -R /mnt \033[0m\033[1;33m]\033[0m "
+	sleep 2
+	echo -e " \033[1;33m\033[44m[ 3 FINALLY REBOOT, WITH THIS COMMAND $\033[1;37m reboot \033[0m\033[1;33m]\033[0m "
+	sleep 2
+
+# [ INSTRUCTIONS FOR AFTER REBOOTING ] #
+
+	echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"  
+	sleep 2
+	echo -e " \033[1;33m\033[44m[ AFTER REBOOTING, OPEN A TERMINAL AND RUN THIS COMMAND $"
+	sleep 2
+	echo -e "\033[1;37m\033[44m[ . ~/installscripts/3-arch_apps-INSTALL.sh ]\033[0m\033[1;33m]\033[0m "
+	sleep 2
+
+
+
