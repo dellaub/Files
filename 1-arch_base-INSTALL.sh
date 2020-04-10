@@ -94,7 +94,7 @@ Mountfilesystem
 
 }
 
-movescriptscd 
+movescripts 
 
 # iso 04 [set mirrorlist]
 		
