@@ -59,10 +59,17 @@ else
 
 				echo -e " \033[1;33m[  STEP 01 -  ESSENTIAL ]\033[0m "
 				sleep 2
-				
-					# yay
+						
+						# yay
+						
+						package="yay"
+			
 						sudo git clone https://aur.archlinux.org/yay.git 
 						cd yay
+						
+							# give read and write permissions to install aur packages in /home/.AUR_pkg
+								sudo chmod -R ugo+rw /home/.AUR_pkg/$package
+						
 						makepkg -si
 						cd /home/.AUR_pkg
 			}			
