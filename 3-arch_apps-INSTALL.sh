@@ -64,13 +64,13 @@ else
 
 						package="yay"
 			
-						sudo git clone https://aur.archlinux.org/yay.git 
+						sudo0 git clone https://aur.archlinux.org/yay.git 
 						cd yay
 						
 							# give read and write permissions to install aur packages in /home/.AUR_pkg
 								sudo chmod -R ugo+rw /home/.AUR_pkg/$package
 						
-						makepkg -si
+						makepkg -si --noconfirm
 						cd /home/.AUR_pkg
 			}			
 
@@ -106,9 +106,7 @@ else
 
 
 					# timeshift
-						sudo git clone https://aur.archlinux.org/timeshift.git 
-						cd timeshift
-						makepkg -si
+						yay -S --noconfirm timeshift
 						cd /home/.AUR_pkg
 					
 					# net-tools
@@ -272,7 +270,7 @@ else
 	DIRECTORIES
 	ESSENTIAL
 	#AUDIO
-	#MANAGEMENT
+	MANAGEMENT
 	#BROWSER
 	#TEXT_EDITOR
 	#SYS_INFO
