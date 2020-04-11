@@ -168,7 +168,7 @@ set -e
 				pacman -S --noconfirm --needed xf86-video-ati virtualbox-guest-utils mesa
 			
 			# rxvt-unicode
-				#pacman -S --noconfirm --needed rxvt-unicode
+				pacman -S --noconfirm --needed rxvt-unicode
 }
 
 
@@ -188,7 +188,7 @@ set -e
 					sed 50q /etc/X11/xinit/xinitrc > ~/.xinitrc
 				
 				# add command to .xinitrc
-					echo "setxkbmap be &" >>  ~/.xinitrc    # keyboard layout
+					echo "setxkbmap be &" >>  ~/.xinitrc ;  # keyboard layout
 					echo "exec /usr/bin/i3" >> ~/.xinitrc	# i3 exec
 }
 
