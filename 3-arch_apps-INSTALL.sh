@@ -33,7 +33,7 @@ else
 
 
 	# synchronize the repositories
-		pacman -Sy
+		sudo pacman -Sy
 
 		
 	## CREATE DIRECTORIES ##
@@ -61,7 +61,7 @@ else
 				sleep 2
 				
 					# yay
-						git clone https://aur.archlinux.org/yay.git 
+						sudo git clone https://aur.archlinux.org/yay.git 
 						cd yay
 						makepkg -si
 						cd /.AUR_pkg
@@ -78,16 +78,16 @@ else
 					# pulseaudio
 					# pulseaudio-alsa
 					# pavucontrol
-						pacman -S --noconfirm --needed pulseaudio pulseaudio-alsa pavucontrol
+						sudo pacman -S --noconfirm --needed pulseaudio pulseaudio-alsa pavucontrol
 					
 					# alsa-utils
 					# alsa-plugins
 					# alsa-lib
 					# alsa-firmware
-						pacman -S --noconfirm --needed alsa-utils alsa-plugins alsa-lib alsa-firmware
+						sudo pacman -S --noconfirm --needed alsa-utils alsa-plugins alsa-lib alsa-firmware
 					
 					# audacity
-						pacman -S --noconfirm --needed audacity
+						sudo pacman -S --noconfirm --needed audacity
 			}
 
 		#[  STEP 03 -  MANAGEMENT ]#
@@ -99,7 +99,7 @@ else
 
 
 					# timeshift
-						git clone https://aur.archlinux.org/timeshift.git 
+						sudo git clone https://aur.archlinux.org/timeshift.git 
 						cd timeshift
 						makepkg -si
 						cd /home/.AUR_pkg
@@ -107,7 +107,7 @@ else
 					# net-tools
 					# networkmanager
 					# reflector
-						pacman -S --noconfirm --needed net-tools networkmanager reflector
+						sudo pacman -S --noconfirm --needed net-tools networkmanager reflector
 			}
 
 		#[  STEP 04 -  BROWSER ]#
@@ -119,13 +119,13 @@ else
 
 
 					# brave
-						git clone https://aur.archlinux.org/brave.git 
+						sudo git clone https://aur.archlinux.org/brave.git 
 						cd brave
 						makepkg -si
 						cd /home/.AUR_pkg
 					
 					# surf
-						pacman -S --noconfirm --needed surf
+						sudo pacman -S --noconfirm --needed surf
 			}
 
 		#[  STEP 05 -  TEXT EDITOR ]#
@@ -138,7 +138,7 @@ else
 
 
 					# sublime-text-3
-						git clone https://aur.archlinux.org/sublime-text-dev.git 
+						sudo git clone https://aur.archlinux.org/sublime-text-dev.git 
 						cd sublime-text-dev
 						makepkg -si
 						cd /home/.AUR_pkg
@@ -152,7 +152,7 @@ else
 				sleep 2
 
 					# pfetch
-						git clone https://aur.archlinux.org/pfetch.git 
+						sudo git clone https://aur.archlinux.org/pfetch.git 
 						cd pfetch
 						makepkg -si
 						cd /home/.AUR_pkg
@@ -163,7 +163,7 @@ else
 					# bleachbit
 					# vnstat
 					# sysstat
-						pacman -S --noconfirm --needed dmidecode htop lm_sensors bleachbit vnstat sysstat
+						sudo pacman -S --noconfirm --needed dmidecode htop lm_sensors bleachbit vnstat sysstat
 			}
 
 		#[  STEP 07 -  DOCUMENTS ]#
@@ -177,7 +177,7 @@ else
 					# libreOffice# 
 					# zathura-pdf
 					# vifm
-						pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura-pdf-mupdf
+						sudo pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura-pdf-mupdf
 			}
 
 		#[  STEP 08 -  ACCESSORIES ]#
@@ -190,9 +190,9 @@ else
 
 					# bc 
 					# gcalculator
-						pacman -S --noconfirm --needed bc gcalculator
+						sudo pacman -S --noconfirm --needed bc gcalculator
 					# wttr
-						git clone https://aur.archlinux.org/wttr.git 
+						sudo git clone https://aur.archlinux.org/wttr.git 
 						cd wttr
 						makepkg -si
 						cd /home/.AUR_pkg
@@ -207,13 +207,13 @@ else
 
 
 					# qview
-						git clone https://aur.archlinux.org/qview.git 
+						sudo git clone https://aur.archlinux.org/qview.git 
 						cd qview
 						makepkg -si
 						cd /home/.AUR_pkg
 					# gimp
 					# xwallpaper
-						pacman -S --noconfirm --needed gimp xwallpaper
+						sudo pacman -S --noconfirm --needed gimp xwallpaper
 			}
 
 		#[  STEP 10 -  MEDIA ]#
@@ -226,7 +226,7 @@ else
 
 					# mpv
 					# cmus
-						pacman -S --noconfirm --needed mpv cmus
+						sudo pacman -S --noconfirm --needed mpv cmus
 			}
 
 		#[  STEP 11 -  DOWNLOADERS ]#
@@ -239,7 +239,7 @@ else
 
 					# transmission-cli
 					# youtube-dl
-						pacman -S --noconfirm --needed transmission-cli youtube-dl
+						sudo pacman -S --noconfirm --needed transmission-cli youtube-dl
 			}
 
 		#[  STEP 12 -  ZIP ]#
@@ -252,7 +252,7 @@ else
 
 					# transmission-cli
 					# youtube-dl
-						pacman -S --noconfirm --needed transmission-cli youtube-dl
+						sudo pacman -S --noconfirm --needed transmission-cli youtube-dl
 			}
 
 		#[  STEP 13 -  PRIVACY ]#
