@@ -43,13 +43,13 @@ else
 		DIRECTORIES(){
 
 			# create aur pkg directory
-				sudo mkdir /home/.AUR_pkg
+				sudo mkdir /home/.AUR
 			
 			# move inside the directory
-				cd /home/.AUR_pkg
+				cd /home/.AUR
 			
-			# give read and write permissions to install aur packages in /home/.AUR_pkg
-				sudo chmod -R ugo+rw /home/.AUR_pkg
+			# give read and write permissions to install aur packages in /home/.AUR
+				sudo chmod -R ugo+rw /home/.AUR
 		}	
 
 
@@ -70,12 +70,12 @@ else
 								sudo git clone https://aur.archlinux.org/yay.git 
 								cd yay
 								
-									# give read and write permissions to install aur packages in /home/.AUR_pkg
-									sudo chmod -R ugo+rw /home/.AUR_pkg/$package
+									# give read and write permissions to install aur packages in /home/.AUR
+									sudo chmod -R ugo+rw /home/.AUR/$package
 											
 										# make package
 										makepkg -si --noconfirm
-										cd /home/.AUR_pkg
+										cd /home/.AUR
 			}			
 
 		#[  STEP 02 -  AUDIO ]#
@@ -111,7 +111,7 @@ else
 
 					# timeshift
 						yay -S --noconfirm timeshift
-						cd /home/.AUR_pkg
+						cd /home/.AUR
 					
 					# net-tools
 					# networkmanager
@@ -286,8 +286,8 @@ echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n
 	if [ $sudo == $WITH ]
 	then
 
-	# [ SUDO PERMISSIONS WITH PASSWORD ] #
-	echo "# [ SUDO PERMISSIONS WITH PASSWORD ] #"
+		# [ SUDO PERMISSIONS WITH PASSWORD ] #
+		echo "# [ SUDO PERMISSIONS WITH PASSWORD ] #"
 
 		# enable sudo without password to the new user	
 		sed 's/%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
@@ -297,8 +297,6 @@ echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n
 		nvim /etc/sudoers
 	
 	else
-		then	
-
 		# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #
 		echo "# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #"
 		# finish
