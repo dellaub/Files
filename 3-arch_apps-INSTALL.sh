@@ -64,7 +64,7 @@ else
 						sudo git clone https://aur.archlinux.org/yay.git 
 						cd yay
 						makepkg -si
-						cd /.AUR_pkg
+						cd /home/.AUR_pkg
 			}			
 
 		#[  STEP 02 -  AUDIO ]#
