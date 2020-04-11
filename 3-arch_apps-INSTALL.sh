@@ -41,7 +41,7 @@ else
 		DIRECTORIES(){
 
 			# create aur pkg directory
-				mkdir /home/.AUR_pkg
+				sudo mkdir /home/.AUR_pkg
 			
 			# move inside the directory
 				cd /home/.AUR_pkg
@@ -61,7 +61,7 @@ else
 				sleep 2
 						
 						# yay
-						
+
 						package="yay"
 			
 						sudo git clone https://aur.archlinux.org/yay.git 
