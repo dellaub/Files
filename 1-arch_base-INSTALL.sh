@@ -132,13 +132,32 @@ sleep 2
 
 }
 
+
+
 # [ COMMANDS ] #
+
+DONE=`echo -e " \033[1;32m[ FINISHED ]\033[0m"`
+
+
 partitiondisk
+$DONE
+
 mkfilesystem
+$DONE
+
 Mountfilesystem
+$DONE
+
 movescripts 
+$DONE
+
 kerneldownload
+$DONE
+
 genFStables
+$DONE
+
+
 
 echo -e " \033[1;33m\033[44m[ PLEASE, WHEN YOU LOG IN AS ROOT: ]\033[0m "
 sleep 2
