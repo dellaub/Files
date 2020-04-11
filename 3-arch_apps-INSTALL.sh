@@ -13,15 +13,8 @@ set -e
 echo -e " \033[1;33m[ STEP 00 - STARTING ARCH LINUX INSTALL APPLICATIONS  ]\033[0m "
 sleep 2
 
-	# [ TEMPORARY SUDO PERMISSIONS WITHOUT PASSWORD ] #
 
-		# enable sudo without password to the new user	
-		sed 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
-		sed 's/%wheel ALL=(ALL) ALL/# %wheel ALL=(ALL) ALL/g' /etc/sudoers.tmp > /etc/sudoers.tmp2
-		rm /etc/sudoers.tmp
-		mv /etc/sudoers.tmp2 /etc/sudoers
-		nvim /etc/sudoers
-		su test
+
 
 
 
@@ -39,12 +32,6 @@ then
 
 else
 	
-
-
-
-
-
-
 
 
 	# synchronize the repositories
@@ -288,3 +275,32 @@ else
 	#DOWNLOADERS
 	#ZIP
 fi
+
+echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"
+echo -e " \n\033[1;34m\033[42m[ Do you want SUDO commands WITH PASSWORD (type : W ) ]\033[0m \n"	
+echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n"	
+	read sudo
+	WITH='W'
+	WITHOUT='WO'
+	
+	if [ $sudo == $WITH ]
+	then
+
+	# [ SUDO PERMISSIONS WITH PASSWORD ] #
+	echo "# [ SUDO PERMISSIONS WITH PASSWORD ] #"
+
+		# enable sudo without password to the new user	
+		sed 's/%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
+		sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers.tmp > /etc/sudoers.tmp2
+		rm /etc/sudoers.tmp
+		mv /etc/sudoers.tmp2 /etc/sudoers
+		nvim /etc/sudoers
+	
+	else
+		then	
+
+		# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #
+		echo "# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #"
+		# finish
+		echo -e " \n\033[1;37m\033[41m[ !! INSTALLATION FINISHED !! ]\033[0m \n"
+	fi
