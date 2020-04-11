@@ -60,18 +60,20 @@ else
 				echo -e " \033[1;33m[  STEP 01 -  ESSENTIAL ]\033[0m "
 				sleep 2
 						
-						# yay
+							# yay
 
-						package="yay"
-			
-						sudo git clone https://aur.archlinux.org/yay.git 
-						cd yay
-						
-							# give read and write permissions to install aur packages in /home/.AUR_pkg
-								sudo chmod -R ugo+rw /home/.AUR_pkg/$package
-						
-						makepkg -si --noconfirm
-						cd /home/.AUR_pkg
+							package="yay"
+
+								# clone package build
+								sudo git clone https://aur.archlinux.org/yay.git 
+								cd yay
+								
+									# give read and write permissions to install aur packages in /home/.AUR_pkg
+									sudo chmod -R ugo+rw /home/.AUR_pkg/$package
+											
+										# make package
+										makepkg -si --noconfirm
+										cd /home/.AUR_pkg
 			}			
 
 		#[  STEP 02 -  AUDIO ]#
@@ -126,8 +128,8 @@ else
 					# brave
 						yay -S --noconfirm brave-bin 
 					
-					# surf
-						sudo pacman -S --noconfirm --needed surf
+					# qutebrowser
+						sudo pacman -S --noconfirm --needed qutebrowser
 			}
 
 		#[  STEP 05 -  TEXT EDITOR ]#
@@ -154,14 +156,14 @@ else
 					# pfetch
 						yay -S --noconfirm pfetch 
 
-					
+					# conky
 					# dmidecode
 					# htop
 					# lm_sensors
 					# bleachbit
 					# vnstat
 					# sysstat
-						sudo pacman -S --noconfirm --needed dmidecode htop lm_sensors bleachbit vnstat sysstat
+						sudo pacman -S --noconfirm --needed conky dmidecode htop lm_sensors bleachbit vnstat sysstat
 			}
 
 		#[  STEP 07 -  DOCUMENTS ]#
@@ -172,10 +174,11 @@ else
 				sleep 2
 
 
-					# libreOffice# 
+					# libreOffice 
+					zathura
 					# zathura-pdf
 					# vifm
-						sudo pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura-pdf-mupdf
+						sudo pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura zathura-pdf-mupdf
 			}
 
 		#[  STEP 08 -  ACCESSORIES ]#
@@ -260,7 +263,7 @@ else
 	ESSENTIAL
 	AUDIO
 	MANAGEMENT
-	#BROWSER
+	BROWSER
 	#TEXT_EDITOR
 	#SYS_INFO
 	#DOCUMENTS
