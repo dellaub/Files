@@ -13,6 +13,15 @@ set -e
 echo -e " \033[1;33m[ STEP 00 - STARTING ARCH LINUX INSTALL APPLICATIONS  ]\033[0m "
 sleep 2
 
+	# [ TEMPORARY SUDO PERMISSIONS WITHOUT PASSWORD ] #
+
+		# enable sudo without password to the new user	
+		sed 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
+		sed 's/%wheel ALL=(ALL) ALL/# %wheel ALL=(ALL) ALL/g' /etc/sudoers.tmp > /etc/sudoers.tmp2
+		rm /etc/sudoers.tmp
+		mv /etc/sudoers.tmp2 /etc/sudoers
+		nvim /etc/sudoers
+		su test
 
 
 
@@ -30,13 +39,7 @@ then
 
 else
 	
-	# [ TEMPORARY SUDO PERMISSIONS WITHOUT PASSWORD ] #
 
-		# enable sudo without password to the new user	
-		sed 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers |
-		sed 's/%wheel ALL=(ALL) ALL/# %wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers.tmp
-		mv /etc/sudoers.tmp /etc/sudoers
-		nvim /etc/sudoers
 
 
 
@@ -271,10 +274,10 @@ else
 
 	# [ COMMAND ORDER ] #
 
-	#DIRECTORIES
-	#ESSENTIAL
-	#AUDIO
-	#MANAGEMENT
+	DIRECTORIES
+	ESSENTIAL
+	AUDIO
+	MANAGEMENT
 	#BROWSER
 	#TEXT_EDITOR
 	#SYS_INFO
