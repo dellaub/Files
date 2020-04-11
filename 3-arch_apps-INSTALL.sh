@@ -13,6 +13,13 @@ set -e
 echo -e " \033[1;33m[ STEP 00 - STARTING ARCH LINUX INSTALL APPLICATIONS  ]\033[0m "
 sleep 2
 
+USERCHECK=`echo $USER`
+if [ $USERCHECK -eq 'root' ]
+then
+	echo " your root .."
+else
+	echo ":your not root"
+	
 # synchronize the repositories
 	pacman -Sy
 
