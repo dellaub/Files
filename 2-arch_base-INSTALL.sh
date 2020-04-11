@@ -250,31 +250,31 @@ set -e
 DONE=`echo -e " \033[1;32m[ FINISHED ]\033[0m"`
 
 setmirrors
-$DONE
+echo $DONE
 
 grubInstall
-$DONE
+echo $DONE
 
 adduser
-$DONE
+echo $DONE
 
 rootpass
-$DONE
+echo $DONE
 
 essentialPKGS
-$DONE
+echo $DONE
 
 installGUI
-$DONE
+echo $DONE
 
 configureGUI
-$DONE
+echo $DONE
 
 installDeskEnv
-$DONE
+echo $DONE
 
 configureDE
-$DONE
+echo $DONE
 
 
 
