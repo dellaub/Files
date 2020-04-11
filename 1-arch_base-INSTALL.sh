@@ -140,22 +140,22 @@ DONE=`echo -e " \033[1;32m[ FINISHED ]\033[0m"`
 
 
 partitiondisk
-$DONE
+echo $DONE
 
 mkfilesystem
-$DONE
+echo $DONE
 
 Mountfilesystem
-$DONE
+echo $DONE
 
 movescripts 
-$DONE
+echo $DONE
 
 kerneldownload
-$DONE
+echo $DONE
 
 genFStables
-$DONE
+echo $DONE
 
 
 
