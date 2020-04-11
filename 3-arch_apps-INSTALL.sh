@@ -41,13 +41,13 @@ else
 		DIRECTORIES(){
 
 			# create aur pkg directory
-				mkdir ~/.AUR_pkg
+				mkdir /home/.AUR_pkg
 			
 			# move inside the directory
-				cd ~/.AUR_pkg
+				cd /home/.AUR_pkg
 			
-			# give read and write permissions to install aur packages in ~/.AUR_pkg
-				sudo chmod -R ugo+rw ~/.AUR_pkg
+			# give read and write permissions to install aur packages in /home/.AUR_pkg
+				sudo chmod -R ugo+rw /home/.AUR_pkg
 		}	
 
 
@@ -64,7 +64,7 @@ else
 						git clone https://aur.archlinux.org/yay.git 
 						cd yay
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /.AUR_pkg
 			}			
 
 		#[  STEP 02 -  AUDIO ]#
@@ -102,7 +102,7 @@ else
 						git clone https://aur.archlinux.org/timeshift.git 
 						cd timeshift
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /home/.AUR_pkg
 					
 					# net-tools
 					# networkmanager
@@ -122,7 +122,7 @@ else
 						git clone https://aur.archlinux.org/brave.git 
 						cd brave
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /home/.AUR_pkg
 					
 					# surf
 						pacman -S --noconfirm --needed surf
@@ -141,7 +141,7 @@ else
 						git clone https://aur.archlinux.org/sublime-text-dev.git 
 						cd sublime-text-dev
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /home/.AUR_pkg
 			}
 
 		#[  STEP 06 -  SYSTEM INFORMATION ]#
@@ -155,7 +155,7 @@ else
 						git clone https://aur.archlinux.org/pfetch.git 
 						cd pfetch
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /home/.AUR_pkg
 					
 					# dmidecode
 					# htop
@@ -195,7 +195,7 @@ else
 						git clone https://aur.archlinux.org/wttr.git 
 						cd wttr
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /home/.AUR_pkg
 			}
 
 		#[  STEP 09 -  IMAGE ]#
@@ -210,7 +210,7 @@ else
 						git clone https://aur.archlinux.org/qview.git 
 						cd qview
 						makepkg -si
-						cd ~/.AUR_pkg
+						cd /home/.AUR_pkg
 					# gimp
 					# xwallpaper
 						pacman -S --noconfirm --needed gimp xwallpaper
