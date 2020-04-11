@@ -12,14 +12,21 @@ set -e
 
 echo -e " \033[1;33m[ STEP 00 - STARTING ARCH LINUX INSTALL APPLICATIONS  ]\033[0m "
 sleep 2
+# USER CHECK
 
-USERCHECK=`echo $USER`
-if [ $USERCHECK -eq 'root' ]
+	USERCHECK=`echo $USER`
+	ROOT="root"
+
+if [ $USERCHECK == $ROOT ]
 then
-	echo " your root .."
+			
+	echo -e " \033[1;37m\033[41m[ !! ATTENTION !! change to a low privilege user and try again ]\033[0m \n"  
+	sleep 2
+	break
 else
-	echo ":your not root"
-fi	
+			
+
+
 # synchronize the repositories
 	pacman -Sy
 
@@ -51,7 +58,7 @@ fi
 					makepkg -si
 					cd ~/.aur_pkg
 		}			
-
+fi
 	#[  STEP 02 -  AUDIO ]#
 
 			
