@@ -64,7 +64,7 @@ else
 
 						package="yay"
 			
-						sudo git clone https://aur.archlinux.org/yay.git 
+						sudo0 git clone https://aur.archlinux..org/yay.g.it 
 						cd yay
 						
 							# give read and write permissions to install aur packages in /home/.AUR_pkg
@@ -124,10 +124,7 @@ else
 
 
 					# brave
-						sudo git clone https://aur.archlinux.org/brave.git 
-						cd brave
-						makepkg -si
-						cd /home/.AUR_pkg
+						yay -S --noconfirm brave 
 					
 					# surf
 						sudo pacman -S --noconfirm --needed surf
@@ -143,10 +140,8 @@ else
 
 
 					# sublime-text-3
-						sudo git clone https://aur.archlinux.org/sublime-text-dev.git 
-						cd sublime-text-dev
-						makepkg -si
-						cd /home/.AUR_pkg
+						yay -S --noconfirm sublime-text-dev 
+
 			}
 
 		#[  STEP 06 -  SYSTEM INFORMATION ]#
@@ -157,10 +152,8 @@ else
 				sleep 2
 
 					# pfetch
-						sudo git clone https://aur.archlinux.org/pfetch.git 
-						cd pfetch
-						makepkg -si
-						cd /home/.AUR_pkg
+						yay -S --noconfirm pfetch 
+
 					
 					# dmidecode
 					# htop
@@ -197,10 +190,8 @@ else
 					# gcalculator
 						sudo pacman -S --noconfirm --needed bc gcalculator
 					# wttr
-						sudo git clone https://aur.archlinux.org/wttr.git 
-						cd wttr
-						makepkg -si
-						cd /home/.AUR_pkg
+						yay -S --noconfirm wttr 
+
 			}
 
 		#[  STEP 09 -  IMAGE ]#
@@ -212,10 +203,8 @@ else
 
 
 					# qview
-						sudo git clone https://aur.archlinux.org/qview.git 
-						cd qview
-						makepkg -si
-						cd /home/.AUR_pkg
+						yay -S --noconfirm qview 
+
 					# gimp
 					# xwallpaper
 						sudo pacman -S --noconfirm --needed gimp xwallpaper
@@ -269,15 +258,15 @@ else
 
 	DIRECTORIES
 	ESSENTIAL
-	#AUDIO
+	AUDIO
 	MANAGEMENT
-	#BROWSER
-	#TEXT_EDITOR
-	#SYS_INFO
-	#DOCUMENTS
-	#ACCESSORIES
-	#IMAGE
-	#MEDIA
-	#DOWNLOADERS
-	#ZIP
+	BROWSER
+	TEXT_EDITOR
+	SYS_INFO
+	DOCUMENTS
+	ACCESSORIES
+	IMAGE
+	MEDIA
+	DOWNLOADERS
+	ZIP
 fi
