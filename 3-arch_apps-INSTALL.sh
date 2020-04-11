@@ -29,7 +29,19 @@ then
 	exit
 
 else
-			
+	
+	# [ TEMPORARY SUDO PERMISSIONS WITHOUT PASSWORD ] #
+
+		# enable sudo without password to the new user	
+		sed 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers |
+		sed 's/%wheel ALL=(ALL) ALL/# %wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers.tmp
+		mv /etc/sudoers.tmp /etc/sudoers
+		nvim /etc/sudoers
+
+
+
+
+
 
 
 	# synchronize the repositories
@@ -259,11 +271,11 @@ else
 
 	# [ COMMAND ORDER ] #
 
-	DIRECTORIES
-	ESSENTIAL
-	AUDIO
-	MANAGEMENT
-	BROWSER
+	#DIRECTORIES
+	#ESSENTIAL
+	#AUDIO
+	#MANAGEMENT
+	#BROWSER
 	#TEXT_EDITOR
 	#SYS_INFO
 	#DOCUMENTS
