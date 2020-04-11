@@ -64,7 +64,7 @@ else
 
 						package="yay"
 			
-						sudo0 git clone https://aur.archlinux.org/yay.git 
+						sudo git clone https://aur.archlinux.org/yay.git 
 						cd yay
 						
 							# give read and write permissions to install aur packages in /home/.AUR_pkg
