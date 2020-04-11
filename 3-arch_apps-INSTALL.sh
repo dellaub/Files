@@ -124,7 +124,7 @@ else
 
 
 					# brave
-						yay -S --noconfirm brave 
+						yay -S --noconfirm brave-bin 
 					
 					# surf
 						sudo pacman -S --noconfirm --needed surf
@@ -258,15 +258,15 @@ else
 
 	DIRECTORIES
 	ESSENTIAL
-	AUDIO
-	MANAGEMENT
+	#AUDIO
+	#MANAGEMENT
 	BROWSER
-	TEXT_EDITOR
-	SYS_INFO
-	DOCUMENTS
-	ACCESSORIES
-	IMAGE
-	MEDIA
-	DOWNLOADERS
-	ZIP
+	#TEXT_EDITOR
+	#SYS_INFO
+	#DOCUMENTS
+	#ACCESSORIES
+	#IMAGE
+	#MEDIA
+	#DOWNLOADERS
+	#ZIP
 fi
