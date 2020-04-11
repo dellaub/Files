@@ -102,6 +102,9 @@ set -e
 			# enable sudo to the new user WITHOUT PASSWORD IS TEMPORARY
 				sed 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
 				mv /etc/sudoers.tmp /etc/sudoers
+				#debug
+				cat /etc/sudoers ; sleep 2
+
 }				
 
 
@@ -185,11 +188,13 @@ set -e
 					cp /etc/X11/xinit/xinitrc ~/.xinitrc					
 				
 				# edit .xinitrc
-					sed 50q /etc/X11/xinit/xinitrc > ~/.xinitrc
+					sed '50q' /etc/X11/xinit/xinitrc > ~/.xinitrc
 				
 				# add command to .xinitrc
-					echo "setxkbmap be &" >>  ~/.xinitrc ;  # keyboard layout
-					echo "exec /usr/bin/i3" >> ~/.xinitrc	# i3 exec
+					echo -e "setxkbmap be &\nexec /usr/bin/i3" >>  ~/.xinitrc ;  
+				
+				#debug
+				cat ~/.xinitrc ; sleep 2
 }
 
 
@@ -228,16 +233,13 @@ set -e
 
 			
 			# copy .bash_profile to ~/
-				cp /etc/skel/.bash_profile ~/
+			cp /etc/skel/.bash_profile ~/ 
 
 			# autostart  
-			echo -e "\nif systemctl -q is-active graphical.target && [[ ! \$DISPLAY && \$XDG_VTNR -eq 1 ]]; then" >> ~/.bash_profile
-			
-				# i3 through .xinitrc
-					echo -e "	exec startx" >> ~/.bash_profile
-			
-			# end
-			echo -e "fi" >> ~/.bash_profile  
+			echo -e "\nif systemctl -q is-active graphical.target && [[ ! \$DISPLAY && \$XDG_VTNR -eq 1 ]]; then\n    exec startx\nfi" >> ~/.bash_profile
+
+			#debug
+			cat ~/.bash_profile ; sleep 2
 			 	
 }
 
@@ -245,16 +247,35 @@ set -e
 
 
 ## [ COMMANDS ] ##	
+DONE=`echo -e " \033[1;32m[ FINISHED ]\033[0m"`
 
 setmirrors
+$DONE
+
 grubInstall
+$DONE
+
 adduser
+$DONE
+
 rootpass
+$DONE
+
 essentialPKGS
+$DONE
+
 installGUI
+$DONE
+
 configureGUI
+$DONE
+
 installDeskEnv
+$DONE
+
 configureDE
+$DONE
+
 
 
 
@@ -272,7 +293,7 @@ configureDE
 
 # [ INSTRUCTIONS FOR AFTER REBOOTING ] #
 
-	echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"  
+	echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! remove iso from the system ]\033[0m \n"  
 	sleep 2
 	echo -e "\033[1;33m\033[44m[ AFTER REBOOTING, OPEN A TERMINAL AND RUN THIS COMMAND ]\n # \033[0m\033[1;37m\033[44m . /.installscripts/3-arch_apps-INSTALL.sh \033[0m"
 	sleep 2
