@@ -19,7 +19,7 @@ then
 	echo " your root .."
 else
 	echo ":your not root"
-	
+fi	
 # synchronize the repositories
 	pacman -Sy
 
