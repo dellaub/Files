@@ -18,10 +18,10 @@ sleep 2
 	USERCHECK=`echo $USER`
 	ROOT="root"
 
-if [ $USERCHECK == $ROOT ]
+if [ $USERCHECK =! $ROOT ]
 then
 			
-	echo -e " \033[1;37m\033[41m[ !! ATTENTION !! change to a low privilege user and try again ]\033[0m \n"  
+	echo -e " \033[1;37m\033[41m[ !! ATTENTION !! change to a root privilege user and try again ]\033[0m \n"  
 	sleep 2
 	exit
 
