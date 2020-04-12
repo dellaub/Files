@@ -44,7 +44,7 @@
     set $WS10 10.[Cleanup]
 
     # PROGRAMS
-    set $TERMINAL gnome-terminal
+    set $TERMINAL termite
     set $BROWSER qutebrowser
     set $BAR i3blocks
     set $EDITOR subl
@@ -56,7 +56,7 @@
         # [ FIND PROGRAM'S CLASS ] #
         # $(xprop | grep WM_CLASS) + click in the window
 
-    set $CLASS_TERMINAL gnome-terminal
+    set $CLASS_TERMINAL termite
     set $CLASS_BROWSER qutebrowser
     set $CLASS_EDITOR Sublime_text
     set $CLASS_PDF_READER Zathura
