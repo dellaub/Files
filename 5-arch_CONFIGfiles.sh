@@ -32,7 +32,7 @@ else
 	
 		# clone custom configs at home
 			cd
-			git clone https://github.com/dellaub/Files.git
+			#git clone https://github.com/dellaub/Files.git
 
 	
 
