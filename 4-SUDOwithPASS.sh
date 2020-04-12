@@ -8,7 +8,7 @@ set -e
 												
 
 # [ STARTUP ] #
-		echo "\033[1;37m# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #\033[0m "
+		echo -e "\033[1;37m# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #\033[0m "
 
 		# enable sudo without password to the new user	
 		sed 's/%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
