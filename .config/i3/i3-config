@@ -1,0 +1,228 @@
+############
+###[ i3 ]###
+#####################################
+###[ ORDER ]###[ AZERTY - belgium ]##
+#####################################
+
+# i3 config file (v4)
+
+
+# 01 [ SET VARIABLES ] # 
+
+    # MOD KEY | Mod4 = win | Mod1 = alt | #
+    set $mod Mod4 
+    
+    # FONT
+    set $FONT monospace
+    set $FONTSIZE 9
+   
+    # COLORS
+    set $black              #121212
+    set $grey               #2c2c2c
+    set $white              #faf2e1
+    set $red                #ce1804
+    set $green              #1acf00
+    set $blue               #1d15be
+    set $purple             #6f05a3
+    set $yellow             #fff900
+    set $orange             #ff5900
+    set $turqoise           #00FFF2
+    
+    # WINDOWS (pixels)
+    set $BORDER_SIZE 5
+    
+    # WORKSPACES
+    set $WS1 1.[Terminal]
+    set $WS2 2.[Editor]
+    set $WS3 3.[Browser]
+    set $WS4 4.[Music]
+    set $WS5 5.[Video]
+    set $WS6 6.[Image]
+    set $WS7 7.[...]a
+    set $WS8 8.[...]
+    set $WS9 9.[...]
+    set $WS10 10.[Cleanup]
+
+    # PROGRAMS
+    set $TERMINAL gnome-terminal
+    set $BROWSER qutebrowser
+    set $BAR i3blocks
+    set $EDITOR subl
+    set $PDF_READER Zathura
+    set $IMG_VIEWER qview
+    set $SYS_CLEANUP bleachbit
+
+    # PROGRAM CLASS 
+        # [ FIND PROGRAM'S CLASS ] #
+        # $(xprop | grep WM_CLASS) + click in the window
+
+    set $CLASS_TERMINAL gnome-terminal
+    set $CLASS_BROWSER qutebrowser
+    set $CLASS_EDITOR Sublime_text
+    set $CLASS_PDF_READER Zathura
+    set $CLASS_IMG_VIEWER qview
+    set $CLASS_SYS_CLEANUP bleachbit
+
+# 02 [ FONT ] #
+    
+    # SET FONTS
+    font pango:$FONT $FONTSIZE
+
+# 03 [ WINDOWS ] #
+
+
+    ## SETTINGS
+    ##
+    ######## NO BORDERS
+            new_window pixel $BORDER_SIZE
+    ##
+    ######## FOCUS WINDOW (arrows)
+            bindsym $mod+Left  focus left
+            bindsym $mod+Down  focus down
+            bindsym $mod+Up    focus up
+            bindsym $mod+Right focus right
+    ##
+    ######## MOVE WINDOW (arrows)
+            bindsym $mod+Shift+Left  move left
+            bindsym $mod+Shift+Down  move down
+            bindsym $mod+Shift+Up    move up
+            bindsym $mod+Shift+Right move right
+    ##
+    ######## WINDOW SPLIT
+            
+        # HORIZONTAL SPLIT
+            bindsym $mod+h split h
+        
+        # VERTICAL SPLIT
+            bindsym $mod+v split v
+    ##
+    ######## WINDOW MODES
+
+        # FULLSCREEN (selected window)
+            bindsym $mod+f fullscreen toggle
+
+        # WINDOW LAYOUT ( stack , tabbed , split )
+            bindsym $mod+s layout stacking
+            bindsym $mod+z layout tabbed
+            bindsym $mod+e layout toggle split
+
+        # TOGGLE TILING / FLOATING
+            bindsym $mod+Shift+space floating toggle
+    ##        
+    ######## RESIZE WINDOWS ( [ j  k  l  m ] == [ <  ^  v  > ] ) 
+
+             #CMD    #KEY-BIND     #ACTION            #AMOUNT       
+            bindsym   $mod+j   resize shrink width   2 px or 2 ppt
+            bindsym   $mod+k   resize grow   height  2 px or 2 ppt
+            bindsym   $mod+l   resize shrink height  2 px or 2 ppt
+            bindsym   $mod+m   resize grow   width   2 px or 2 ppt 
+
+    ##
+    ######## KILL WINDOWS
+            bindsym $mod+Shift+q kill
+
+
+
+# 04 [ PROGRAMS ] #
+
+
+######## OPEN PROGRAM IN A SPECIFIC WORKSPACE
+    
+             #CMD          # CLASS             #WORKSPACE
+            assign [class="$CLASS_TERMINAL"]      $WS1
+            assign [class="$CLASS_EDITOR"]        $WS2
+            assign [class="$CLASS_BROWSER"]       $WS3
+            assign [class="$CLASS_FILE_MANAGER"]  $WS4
+            assign [class="$CLASS_PDF_READERP"]   $WS5
+            assign [class="$CLASS_IMG_VIEWER"]    $WS6
+            assign [class="$CLASS_SYS_CLEANUP"]   $WS10
+
+######## PROGRAM START KEY BINDINGS
+        
+        # TERMINAL
+            bindsym $mod+Return exec $TERMINAL
+
+        # APP LAUNCHER
+            bindsym $mod+d exec rofi -show run       
+
+
+
+
+# 05 [ WORKSPACE ] #
+
+######## SHOW WORKSPACE 
+
+              #CMD     #KEY-BIND     #ACTION   #TARGET
+            bindsym $mod+ampersand  workspace   $WS1
+            bindsym $mod+eacute     workspace   $WS2
+            bindsym $mod+quotedbl   workspace   $WS3
+            bindsym $mod+apostrophe workspace   $WS4
+            bindsym $mod+parenleft  workspace   $WS5
+            bindsym $mod+section    workspace   $WS6
+            bindsym $mod+egrave     workspace   $WS7
+            bindsym $mod+exclam     workspace   $WS8
+            bindsym $mod+ccedilla   workspace   $WS9
+            bindsym $mod+agrave     workspace   $WS10
+
+######## MOVE WINDOW (container) TO WORKSPACE
+
+              #CMD     #KEY-BIND                      #ACTION              #TARGET
+            bindsym $mod+Shift+ampersand    move container to workspace     $WS1 
+            bindsym $mod+Shift+eacute       move container to workspace     $WS2 
+            bindsym $mod+Shift+quotedbl     move container to workspace     $WS3 
+            bindsym $mod+Shift+apostrophe   move container to workspace     $WS4 
+            bindsym $mod+Shift+5            move container to workspace     $WS5 
+            bindsym $mod+Shift+section      move container to workspace     $WS6 
+            bindsym $mod+Shift+egrave       move container to workspace     $WS7 
+            bindsym $mod+Shift+exclam       move container to workspace     $WS8 
+            bindsym $mod+Shift+ccedilla     move container to workspace     $WS9 
+            bindsym $mod+Shift+agrave       move container to workspace     $WS10 
+
+# 06 [ i3 CONTROLS ] #
+
+    #
+    ######## RELOAD CONFIG FILE
+            bindsym $mod+Shift+c reload
+    #    
+    ######## RESTART i3
+            bindsym $mod+Shift+r restart
+    #    
+    ######## EXIT i3
+            bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# 07 [ STATUS BAR ] # 
+        
+bar {
+        
+        status_command i3blocks
+            
+            # COLORS
+
+                colors {
+                    
+                # bar
+                    background #000000
+                    statusline #ffffff
+                    separator #666666
+                    
+                # workspace
+                    focused_workspace  #4c7899 #285577 #ffffff
+                    active_workspace   #333333 #5f676a #ffffff
+                    inactive_workspace #333333 #222222 #888888
+                    urgent_workspace   #2f343a #900000 #ffffff
+                    binding_mode       #2f343a #900000 #ffffff
+                }
+    }
+
+# 08 [ THEMES ] #
+
+    ## CLASS
+    ##
+    ######## WINDOWS               border   backgr.  text     indicator child_border
+           client.focused          #4c7899  #285577  #ffffff  #2e9ef4   $white
+           client.focused_inactive #333333  #5f676a  #ffffff  #484e50   $grey
+           client.unfocused        #333333  #222222  #888888  #292d2e   $grey
+           client.urgent           #2f343a  #900000  #ffffff  #900000   #900000    
+        
+
+# 09 [ ... ] #
