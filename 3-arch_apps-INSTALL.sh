@@ -192,8 +192,8 @@ else
 
 
 					# bc 
-					# gcalculator
-						sudo pacman -S --noconfirm --needed bc gcalculator
+					# mate-calc
+						sudo pacman -S --noconfirm --needed bc mate-calc
 					# wttr
 						yay -S --noconfirm wttr 
 
@@ -265,15 +265,15 @@ else
 	ESSENTIAL
 	AUDIO
 	MANAGEMENT
-	#BROWSER
-	#TEXT_EDITOR
-	#SYS_INFO
-	#DOCUMENTS
-	#ACCESSORIES
-	#IMAGE
-	#MEDIA
-	#DOWNLOADERS
-	#ZIP
+	BROWSER
+	TEXT_EDITOR
+	SYS_INFO
+	DOCUMENTS
+	ACCESSORIES
+	IMAGE
+	MEDIA
+	DOWNLOADERS
+	ZIP
 fi
 
 echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"
