@@ -177,7 +177,7 @@ else
 
 
 					# libreOffice 
-					zathura
+					# zathura
 					# zathura-pdf
 					# vifm
 						sudo pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura zathura-pdf-mupdf
@@ -291,9 +291,10 @@ echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n
 
 		# enable sudo without password to the new user	
 		sed 's/%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
-		sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers.tmp > /etc/sudoers.tmp2
-		rm /etc/sudoers.tmp
-		mv /etc/sudoers.tmp2 /etc/sudoers
+		mv /etc/sudoers.tmp /etc/sudoers
+		
+		sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers.tmp2
+		mv /etc/sudoers.tmp /etc/sudoers
 		nvim /etc/sudoers
 	
 	else
