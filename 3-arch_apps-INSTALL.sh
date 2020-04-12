@@ -287,15 +287,8 @@ echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n
 	then
 
 		# [ SUDO PERMISSIONS WITH PASSWORD ] #
-		echo "# [ SUDO PERMISSIONS WITH PASSWORD ] #"
-
-		# enable sudo without password to the new user	
-		sed 's/%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers > /etc/sudoers.tmp
-		mv /etc/sudoers.tmp /etc/sudoers
-		
-		sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers > /etc/sudoers.tmp2
-		mv /etc/sudoers.tmp /etc/sudoers
-		nvim /etc/sudoers
+		echo -e " \n\033[1;37m\033[41m !! Run as ROOT !! :\n \033[0m\033[1;33m . /.installscripts/4-SUDOwithPASS.sh' \033[0m \n"
+		sudo su
 	
 	else
 		# [ SUDO PERMISSIONS WITHOUT PASSWORD ] #
