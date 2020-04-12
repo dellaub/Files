@@ -249,9 +249,10 @@ else
 				sleep 2
 
 
-					# transmission-cli
-					# youtube-dl
-						sudo pacman -S --noconfirm --needed transmission-cli youtube-dl
+					# unrar
+					# unzip
+					# zip
+						pacman -S --noconfirm --needed unrar unzip zip
 			}
 
 		#[  STEP 13 -  PRIVACY ]#
@@ -277,8 +278,8 @@ else
 fi
 
 echo -e " \n\033[1;37m\033[41m[ !! ATTENTION !! ]\033[0m \n"
-echo -e " \n\033[1;34m\033[42m[ Do you want SUDO commands WITH PASSWORD (type : W ) ]\033[0m \n"	
-echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n"	
+echo -e " \n\033[1;37m\033[44m[ Do you want SUDO commands WITH PASSWORD (type : W ) ]\033[0m \n"	
+echo -e " \n\033[1;37m\033[44m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n"	
 	read sudo
 	WITH='W'
 	WITHOUT='WO'
@@ -287,7 +288,7 @@ echo -e " \n\033[1;37m\033[41m[ ...or WITHOUT PASSWORD ? (type : WO) ]\033[0m \n
 	then
 
 		# [ SUDO PERMISSIONS WITH PASSWORD ] #
-		echo -e " \n\033[1;37m\033[41m !! Run as ROOT !! :\n \033[0m\033[1;33m . /.installscripts/4-SUDOwithPASS.sh' \033[0m \n"
+		echo -e " \n\033[1;37m\033[41m !! Run as ROOT !! :\n \033[0m\033[1;33m\033[41m . /.installscripts/4-SUDOwithPASS.sh' \033[0m \n"
 		sudo su
 	
 	else
