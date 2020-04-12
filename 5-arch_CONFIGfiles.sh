@@ -56,6 +56,7 @@ else
 				# replace original 
 				mv ~/Files/.config/i3/config ~/.config/i3/config
 		}
+i3config
 
 	# 4. rofi
 		# DOCS=""
