@@ -175,12 +175,14 @@ else
 				echo -e " \033[1;33m[  STEP 07 -  DOCUMENTS ]\033[0m "
 				sleep 2
 
-
+					
 					# libreOffice 
 					# zathura
 					# zathura-pdf
 					# vifm
-						sudo pacman -S --noconfirm --needed vifm libreoffice-fresh-en-gb zathura zathura-pdf-mupdf
+					# deepin-file-manager
+					# deepin-icon-theme
+						sudo pacman -S --noconfirm --needed  deepin-icon-theme deepin-file-manager vifm libreoffice-fresh-en-gb zathura zathura-pdf-mupdf
 			}
 
 		#[  STEP 08 -  ACCESSORIES ]#
