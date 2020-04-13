@@ -89,14 +89,18 @@ sleep 2
 
 			# create home and boot folder within /mnt
 				mkdir /mnt/.installscripts 
+			
 			# copy the second part of the installation to the system
 				cp ~/Files/2-arch_base-INSTALL.sh /mnt/.installscripts 
 				cp ~/Files/3-arch_apps-INSTALL.sh /mnt/.installscripts
 				cp ~/Files/4-SUDOwithPASS.sh /mnt/.installscripts/
+				cp ~/Files/5-arch_CONFIGfiles.sh /mnt/.installscripts/
+			
 			# make them executable
 				chmod +x /mnt/.installscripts/2-arch_base-INSTALL.sh
 				chmod +x /mnt/.installscripts/3-arch_apps-INSTALL.sh
 				chmod +x /mnt/.installscripts/4-SUDOwithPASS.sh
+				chmod +x /mnt/.installscripts/5-arch_CONFIGfiles.sh
 }
 
 
