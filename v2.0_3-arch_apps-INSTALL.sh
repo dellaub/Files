@@ -85,11 +85,11 @@ else
 			
 			#[############## AUDIO ##############]#
 				sudo pacman -S --noconfirm --needed pulseaudio pulseaudio-alsa pavucontrol
-				sudo pacman -S --noconfirm --needed alsa-utils alsa-plugins alsa-lib alsa-firmware
+				#sudo pacman -S --noconfirm --needed alsa-utils alsa-plugins alsa-lib alsa-firmware
 				sudo pacman -S --noconfirm --needed audacity
 			
 			#[############ MANAGEMENT ###########]#
-				sudo pacman -S --noconfirm --needed net-tools networkmanager reflector
+				sudo pacman -S --noconfirm --needed net-tools reflector 
 			
 			#[############# BROWSER #############]#
 				sudo pacman -S --noconfirm --needed qutebrowser
