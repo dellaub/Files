@@ -160,7 +160,7 @@ sleep 2
 							# linux-lts
 							# linux-lts-headers
 							# vim
-								pacstrap /mnt base base-devel vim linux linux-lts linux-firmware linux-lts-headers 
+								pacstrap /mnt base base-devel vim linux linux-firmware linux-lts linux-lts-headers 
 					}
 		#			
 
