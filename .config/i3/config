@@ -17,34 +17,34 @@
     set $FONTSIZE 9
    
     # COLORS
-    set $black              #121212
-    set $grey               #2c2c2c
-    set $white              #faf2e1
-    set $red                #ce1804
-    set $green              #1acf00
-    set $blue               #1d15be
-    set $purple             #6f05a3
-    set $yellow             #fff900
-    set $orange             #ff5900
-    set $turqoise           #00FFF2
+    set $BLACK              #121212
+    set $GREY               #2c2c2c
+    set $WHITE              #faf2e1
+    set $RED                #ce1804
+    set $GREEN              #1acf00
+    set $BLUE               #1d15be
+    set $PURPLE             #6f05a3
+    set $YELLOW             #fff900
+    set $ORANGE             #ff5900
+    set $TURQOISE           #00FFF2
     
     # WINDOWS (pixels)
-    set $BORDER_SIZE 5
+    set $BORDER_SIZE 1
     
     # WORKSPACES
-    set $WS1 1.[Terminal]
-    set $WS2 2.[Editor]
-    set $WS3 3.[Browser]
-    set $WS4 4.[Music]
-    set $WS5 5.[Video]
-    set $WS6 6.[Image]
-    set $WS7 7.[...]a
-    set $WS8 8.[...]
-    set $WS9 9.[...]
-    set $WS10 10.[Cleanup]
+    set $WS1 1 Terminal
+    set $WS2 2 Text Editor
+    set $WS3 3 Web Browser
+    set $WS4 4 File Explorer
+    set $WS5 5 Music Player
+    set $WS6 6 Video Player
+    set $WS7 7 Image Viewer
+    set $WS8 8 Document Viewer
+    set $WS9 9 ...
+    set $WS10 10 Sys_Cleanup
 
     # PROGRAMS
-    set $TERMINAL termite
+    set $TERMINAL gnome-terminal
     set $BROWSER qutebrowser
     set $BAR i3blocks
     set $EDITOR subl
@@ -56,12 +56,12 @@
         # [ FIND PROGRAM'S CLASS ] #
         # $(xprop | grep WM_CLASS) + click in the window
 
-    set $CLASS_TERMINAL termite
-    set $CLASS_BROWSER qutebrowser
-    set $CLASS_EDITOR Sublime_text
-    set $CLASS_PDF_READER Zathura
-    set $CLASS_IMG_VIEWER qview
-    set $CLASS_SYS_CLEANUP bleachbit
+    # set $CLASS_TERMINAL gnome-terminal
+    # set $CLASS_BROWSER qutebrowser
+    # set $CLASS_EDITOR Subl
+    # set $CLASS_PDF_READER Zathura
+    # set $CLASS_IMG_VIEWER qview
+    # set $CLASS_SYS_CLEANUP bleachbit
 
 # 02 [ FONT ] #
     
@@ -109,7 +109,7 @@
         # TOGGLE TILING / FLOATING
             bindsym $mod+Shift+space floating toggle
     ##        
-    ######## RESIZE WINDOWS ( [ j  k  l  m ] == [ <  ^  v  > ] ) 
+    ######## RESIZE WINDOWS ( [ J  K  L  M ] == [ <  ^  v  > ] ) 
 
              #CMD    #KEY-BIND     #ACTION            #AMOUNT       
             bindsym   $mod+j   resize shrink width   2 px or 2 ppt
@@ -118,7 +118,7 @@
             bindsym   $mod+m   resize grow   width   2 px or 2 ppt 
 
     ##
-    ######## KILL WINDOWS
+    ######## KILL WINDOW
             bindsym $mod+Shift+q kill
 
 
@@ -128,22 +128,51 @@
 
 ######## OPEN PROGRAM IN A SPECIFIC WORKSPACE
     
-             #CMD          # CLASS             #WORKSPACE
-            assign [class="$CLASS_TERMINAL"]      $WS1
-            assign [class="$CLASS_EDITOR"]        $WS2
-            assign [class="$CLASS_BROWSER"]       $WS3
-            assign [class="$CLASS_FILE_MANAGER"]  $WS4
-            assign [class="$CLASS_PDF_READERP"]   $WS5
-            assign [class="$CLASS_IMG_VIEWER"]    $WS6
-            assign [class="$CLASS_SYS_CLEANUP"]   $WS10
+		for_window [class="termite|Gnome-terminal|xterm"] 	move to workspace $WS1
+		for_window [class="Subl|nvim|vim|nano"] 			move to workspace $WS2
+		for_window [class="qutebrowser|Brave-browser"] 		move to workspace $WS3
+		for_window [class="Pcmanfm"] 						move to workspace $WS4
+		for_window [class="Xplayer|cmus"] 					move to workspace $WS5
+		for_window [class="Vlc"] 							move to workspace $WS6
+		#for_window [class=""] move to workspace $WS7
+		for_window [class="Zathura"]				 		move to workspace $WS8
+		#for_window [class=""] move to workspace $WS9
+		for_window [class="Bleachbit"] 						move to workspace $WS10
 
 ######## PROGRAM START KEY BINDINGS
         
-        # TERMINAL
+        # OPEN TERMINAL
             bindsym $mod+Return exec $TERMINAL
 
-        # APP LAUNCHER
-            bindsym $mod+d exec rofi -show run       
+        # OPEN APP LAUNCHER
+            bindsym $mod+d exec dmenu_run    
+
+        # OPEN BROWSER 
+        	bindsym $mod+F1 		exec brave
+        	bindsym $mod+Shift+F1 	exec qutebrowser
+        
+        # OPEN TEXT EDITOR
+        	bindsym $mod+F2 exec Subl       	
+        	# bindsym $mod+F2 exec nvim
+        	#  bindsym $mod+F2 exec nano
+
+        # OPEN FILE MANAGER
+        	bindsym $mod+F3 exec pcmanfm      
+        
+        # OPEN MUSIC PLAYER
+        	bindsym $mod+F4 exec Xplayer       
+        
+        # OPEN VIDEO PLAYER
+        	bindsym $mod+F5 exec vlc
+
+		# OPEN CLEANUP 
+         	bindsym $mod+F6 exec bleachbit     
+        
+        #
+        
+
+        #
+
 
 
 
@@ -152,31 +181,34 @@
 
 ######## SHOW WORKSPACE 
 
-              #CMD     #KEY-BIND     #ACTION   #TARGET
-            bindsym $mod+ampersand  workspace   $WS1
-            bindsym $mod+eacute     workspace   $WS2
-            bindsym $mod+quotedbl   workspace   $WS3
-            bindsym $mod+apostrophe workspace   $WS4
-            bindsym $mod+parenleft  workspace   $WS5
-            bindsym $mod+section    workspace   $WS6
-            bindsym $mod+egrave     workspace   $WS7
-            bindsym $mod+exclam     workspace   $WS8
-            bindsym $mod+ccedilla   workspace   $WS9
-            bindsym $mod+agrave     workspace   $WS10
+		  #CMD     #KEY-BIND     #ACTION   #TARGET
+		bindsym $mod+ampersand  workspace   $WS1
+		bindsym $mod+eacute     workspace   $WS2
+		bindsym $mod+quotedbl   workspace   $WS3
+		bindsym $mod+apostrophe workspace   $WS4
+		bindsym $mod+parenleft  workspace   $WS5
+		bindsym $mod+section    workspace   $WS6
+		bindsym $mod+egrave     workspace   $WS7
+		bindsym $mod+exclam     workspace   $WS8
+		bindsym $mod+ccedilla   workspace   $WS9
+		bindsym $mod+agrave     workspace   $WS10
 
 ######## MOVE WINDOW (container) TO WORKSPACE
 
-              #CMD     #KEY-BIND                      #ACTION              #TARGET
-            bindsym $mod+Shift+ampersand    move container to workspace     $WS1 
-            bindsym $mod+Shift+eacute       move container to workspace     $WS2 
-            bindsym $mod+Shift+quotedbl     move container to workspace     $WS3 
-            bindsym $mod+Shift+apostrophe   move container to workspace     $WS4 
-            bindsym $mod+Shift+5            move container to workspace     $WS5 
-            bindsym $mod+Shift+section      move container to workspace     $WS6 
-            bindsym $mod+Shift+egrave       move container to workspace     $WS7 
-            bindsym $mod+Shift+exclam       move container to workspace     $WS8 
-            bindsym $mod+Shift+ccedilla     move container to workspace     $WS9 
-            bindsym $mod+Shift+agrave       move container to workspace     $WS10 
+		  #CMD     #KEY-BIND                     #ACTION              #TARGET
+		# bindsym $mod+Shift+1    		move container to workspace     $WS1 
+		# bindsym $mod+Shift+2       	move container to workspace     $WS2 
+		# bindsym $mod+Shift+3    		move container to workspace     $WS3 
+		# bindsym $mod+Shift+4   		move container to workspace     $WS4 
+		# bindsym $mod+Shift+5        	move container to workspace     $WS5 
+		# bindsym $mod+Shift+6      	move container to workspace     $WS6 
+		# bindsym $mod+Shift+7       	move container to workspace     $WS7 
+		# bindsym $mod+Shift+8       	move container to workspace     $WS8 
+		# bindsym $mod+Shift+9     		move container to workspace     $WS9 
+		# bindsym $mod+Shift+0       	move container to workspace     $WS10 
+
+
+
 
 # 06 [ i3 CONTROLS ] #
 
@@ -189,6 +221,18 @@
     #    
     ######## EXIT i3
             bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    #
+    ######## OPEN i3 CONFIG FILE
+    		bindsym $mod+F10 exec $EDITOR ~/.config/i3/config
+    #
+    ######## OPEN i3blocks CONFIG FILE
+    		bindsym $mod+F11 exec $EDITOR /etc/i3blocks.conf
+    # 
+    #
+    #
+    #
+
+
 
 # 07 [ STATUS BAR ] # 
         
@@ -201,16 +245,16 @@ bar {
                 colors {
                     
                 # bar
-                    background #000000
-                    statusline #ffffff
-                    separator #666666
+                    background $BLACK
+                    statusline $WHITE
+                    separator $ORANGE
                     
-                # workspace
-                    focused_workspace  #4c7899 #285577 #ffffff
-                    active_workspace   #333333 #5f676a #ffffff
-                    inactive_workspace #333333 #222222 #888888
-                    urgent_workspace   #2f343a #900000 #ffffff
-                    binding_mode       #2f343a #900000 #ffffff
+                # workspace 		   border 	  backgr 	  text
+                    focused_workspace  $WHITE 	  $BLACK	  $WHITE
+                    active_workspace   $PURPLE	  $TURQOISE	  $ORANGE	
+                    inactive_workspace $WHITE	  $BLACK	  $ORANGE	
+                    urgent_workspace   $WHITE	  $ORANGE	  $BLACK	
+                    binding_mode       $RED		  $GREEN	  $BLUE	
                 }
     }
 
@@ -218,11 +262,11 @@ bar {
 
     ## CLASS
     ##
-    ######## WINDOWS               border   backgr.  text     indicator child_border
-           client.focused          #4c7899  #285577  #ffffff  #2e9ef4   $white
-           client.focused_inactive #333333  #5f676a  #ffffff  #484e50   $grey
-           client.unfocused        #333333  #222222  #888888  #292d2e   $grey
-           client.urgent           #2f343a  #900000  #ffffff  #900000   #900000    
+    ######## WINDOWS               border    backgr.  text     indicator child_border
+           client.focused          $ORANGE   $ORANGE  $BLACK   $ORANGE 	 $ORANGE
+           client.focused_inactive $GREY     $GREY    $ORANGE  $GREY   	 $GREY
+           client.unfocused        $GREEN  	 $GREEN   $YELLOW  $ORANGE   $GREY
+           client.urgent           $ORANGE	 $WHITE   $ORANGE  $GREY   	 $GREY    
         
 
 # 09 [ ... ] #
